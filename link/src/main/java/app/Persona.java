@@ -1,4 +1,4 @@
-package ar.tp.integrador.link;
+package app;
 
 import java.util.Objects;
 

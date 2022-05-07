@@ -1,37 +1,36 @@
-package ar.tp.integrador.link;
+package excepciones;
 
-public class ProductoDuplicadoException extends Exception {
+public class ContraseniaIncorrectaException extends Exception {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	public ProductoDuplicadoException() {
+	public ContraseniaIncorrectaException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductoDuplicadoException(String message, Throwable cause, boolean enableSuppression,
+	public ContraseniaIncorrectaException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductoDuplicadoException(String message, Throwable cause) {
+	public ContraseniaIncorrectaException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductoDuplicadoException(String message) {
+	public ContraseniaIncorrectaException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductoDuplicadoException(Throwable cause) {
+	public ContraseniaIncorrectaException(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
 
 	
+
+
 }

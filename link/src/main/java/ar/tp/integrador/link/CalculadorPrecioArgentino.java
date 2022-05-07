@@ -1,5 +1,7 @@
 package ar.tp.integrador.link;
 
+import app.Precio;
+
 public class CalculadorPrecioArgentino implements Precio{
 
 	@Override

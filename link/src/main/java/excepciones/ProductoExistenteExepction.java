@@ -1,6 +1,6 @@
 package excepciones;
 
-import ar.tp.integrador.link.Producto;
+import app.Producto;
 
 public class ProductoExistenteExepction extends Exception {
 

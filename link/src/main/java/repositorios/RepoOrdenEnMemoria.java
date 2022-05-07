@@ -5,13 +5,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import ar.tp.integrador.link.Carrito;
-
+import app.Orden;
 
 
 @Repository
-public class RepoCarrito {
-	private List<Carrito> carritos;
+public class RepoOrdenEnMemoria {
+	private List<Orden> ordenes;
 	
 //	public RepoCarritosEnMemoria() {
 //		super();

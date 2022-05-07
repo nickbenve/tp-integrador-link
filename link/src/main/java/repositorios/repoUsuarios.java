@@ -3,8 +3,7 @@ package repositorios;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import ar.tp.integrador.link.Usuario;
+import app.Usuario;
 import excepciones.UsuarioRepetidoException;
 
 public class repoUsuarios {

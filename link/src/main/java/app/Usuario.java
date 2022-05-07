@@ -1,5 +1,6 @@
-package ar.tp.integrador.link;
+package app;
 
+import excepciones.ContraseniaIncorrectaException;
 
 public class Usuario {
 	private String usuario;

@@ -5,8 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-
-import ar.tp.integrador.link.Producto;
+import app.Producto;
 import excepciones.ProductoExistenteExepction;
 
 @Repository

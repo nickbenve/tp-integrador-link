@@ -1,4 +1,4 @@
-package ar.tp.integrador.link;
+package app;
 
 import java.time.LocalDate;
 
@@ -7,6 +7,7 @@ public class Admin implements Rol{
 	private String mail;
 	private String direccion;
 	private LocalDate fechaIngreso;
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -31,6 +32,11 @@ public class Admin implements Rol{
 	public void setFechaIngreso(LocalDate fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-	
+	public void crearMembrecia(Membrecia membrecia) {
+		
+	}
+	public void darDeBajaMiembrecia(Membrecia membrecia) {
+		
+	}
 
 }

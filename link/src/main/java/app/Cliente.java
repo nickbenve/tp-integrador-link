@@ -1,5 +1,6 @@
-package ar.tp.integrador.link;
+package app;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,6 +12,7 @@ public class Cliente implements Rol{
 	public Cliente(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
+		compras= new ArrayList<Orden>();
 	}
 
 	@Override
@@ -50,12 +52,8 @@ public class Cliente implements Rol{
 		return compras;
 	}
 
-	public void setCompras(List<Orden> compras) {
-		this.compras = compras;
+	public void agregarCompra(Orden orden) {
+		compras.add(orden);
 	}
-	
-	
-	
-	
 	
 }
