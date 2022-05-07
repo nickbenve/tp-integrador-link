@@ -8,19 +8,35 @@ public class Producto {
 	private String descripcion;
 	
 	private String categoria;
-	private Integer cantidad;
+	private Integer cantidadMinima;
 	private Precio Precio;
-	private Vendedor vendedor;
 	private Boolean activo;
 	private Integer stock;
 	
+	private Proveedor proveedor;
 	
 	public Integer getCantidad() {
-		return cantidad;
+		return  cantidadMinima;
+	}
+
+	public Integer getCantidadMinima() {
+		return cantidadMinima;
+	}
+
+	public void setCantidadMinima(Integer cantidadMinima) {
+		this.cantidadMinima = cantidadMinima;
+	}
+
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
 	}
 
 	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+		this. cantidadMinima = cantidad;
 	}
 
 	public Precio getPrecio() {
@@ -47,44 +63,15 @@ public class Producto {
 		this.stock = stock;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(descripcion, nombre);
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Producto other = (Producto) obj;
-		return Objects.equals(descripcion, other.descripcion) && Objects.equals(nombre, other.nombre);
-	}
 
-	public Producto(String nombre,Vendedor vendedor, String descripcion, String categoria, Integer cantMinSolicitud) {
-		super();
-		this.vendedor=vendedor;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.categoria = categoria;
-		this.cantidad = cantMinSolicitud;
-	}
+
+	
 
 	public String getNombre() {
 		return nombre;
 	}
 	
-
-	public Vendedor getVendedor() {
-		return vendedor;
-	}
-
-	public void setVendedor(Vendedor vendedor) {
-		this.vendedor = vendedor;
-	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -107,16 +94,51 @@ public class Producto {
 	}
 
 	public Integer getCantMinSolicitud() {
-		return cantidad;
+		return  cantidadMinima;
 	}
 
 	public void setCantMinSolicitud(Integer cantMinSolicitud) {
-		this.cantidad = cantMinSolicitud;
+		this.cantidadMinima = cantMinSolicitud;
 	}
 
-	public String getNomYDesc() {
-		return nombre+descripcion;
+	public Producto(String nombre, Integer stock, Proveedor proveedor) {
+		super();
+		this.nombre = nombre;
+		this.stock = stock;
+		this.proveedor = proveedor;
+		if(this.stock>0) {
+			this.activo=true;
+		}else {
+			this.activo=false;
+		}
 	}
+
+	public String getNomYProv() {
+		return nombre+proveedor.getNombre();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre, proveedor);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producto other = (Producto) obj;
+		return Objects.equals(nombre, other.nombre) && Objects.equals(proveedor, other.proveedor);
+	}
+
+	public void agregarStock(Integer cantidad) {
+		this.stock=this.getStock() + cantidad;
+		
+	}
+	
 	
 	
 	

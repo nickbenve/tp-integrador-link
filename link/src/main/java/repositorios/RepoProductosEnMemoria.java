@@ -9,8 +9,8 @@ import app.Producto;
 import excepciones.ProductoExistenteExepction;
 
 @Repository
-public class RepoProductos {
-	private List<Producto> productos;
+public class RepoProductosEnMemoria {
+private List<Producto> productos;
 	
 	public void RepoProductosEnMem() {
 		productos= new ArrayList<Producto>();
@@ -20,8 +20,8 @@ public class RepoProductos {
 		return this.productos;
 	}
 	
-	public Producto findByNombre(String codigo) {
-		return productos.stream().filter(x->x.getNomYDesc().equals(codigo)).findFirst().get();
+	public Producto findByNombreYProv(String nombreYProv) {
+		return productos.stream().filter(x->x.getNomYProv().equals(nombreYProv)).findFirst().get();
 	}
 	
 	public void save(Producto producto) throws ProductoExistenteExepction {
@@ -31,5 +31,12 @@ public class RepoProductos {
 			productos.add(producto);
 		}
 	}
+	public void agregarStock(Producto producto,Integer cantidad) throws ProductoInexistenteExepction {
+		if(productos.contains(producto)) {
+			producto.agregarStock(cantidad);
+		}else {
+		}
+	}
+	
 	
 }

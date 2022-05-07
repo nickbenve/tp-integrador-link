@@ -33,10 +33,20 @@ public class Admin implements Rol{
 		this.fechaIngreso = fechaIngreso;
 	}
 	public void crearMembrecia(Membrecia membrecia) {
+//		:TODO
 		
+//		if(RepoMembreciaEnMemoria.contains(membrecia)) {
+//			tirar esepctionj
+//		}else {
+//			agregarmembrecia
+//		}
 	}
 	public void darDeBajaMiembrecia(Membrecia membrecia) {
-		
+//		if(RepoMembreciaEnMemoria.contains(membrecia)) {
+//		dar de baja
+//	}else {
+//		tirar exception
+//	}		
 	}
 
 }
