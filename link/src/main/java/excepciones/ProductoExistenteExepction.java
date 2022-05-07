@@ -1,4 +1,4 @@
-package app;
+package excepciones;
 
 import ar.tp.integrador.link.Producto;
 
