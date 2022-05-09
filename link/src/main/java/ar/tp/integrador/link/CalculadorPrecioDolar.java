@@ -18,9 +18,9 @@ public class CalculadorPrecioDolar implements Precio{
 	}
 	
 	public PrecioDolar run(RestTemplate restTemplate) throws Exception {
-		PrecioDolar precio = restTemplate.getForObject(
+		PrecioDolar precioActual = restTemplate.getForObject(
 				"http://api-dolar-argentina.herokuapp.com/api/dolaroficial", PrecioDolar.class);
-		return precio;
+		return precioActual;
 	}
 	
 	public CalculadorPrecioDolar(Double precio) {
@@ -28,7 +28,6 @@ public class CalculadorPrecioDolar implements Precio{
 		this.precio = precio;
 	}
 
-	//	("http://api-dolar-argentina.herokuapp.com/api/dolaroficial");
 	@Override
 	public double calcularPrecio() {
 		RestTemplate nuevo= new RestTemplate();

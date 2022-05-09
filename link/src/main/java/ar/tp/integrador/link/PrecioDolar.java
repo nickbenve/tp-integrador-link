@@ -14,12 +14,6 @@ public class PrecioDolar {
 		this.compra = compra;
 	}
 
-	public PrecioDolar() {
-		
-	}
-	
-	@Override
-	public String toString() {
-		return "compra" + compra;
+	public PrecioDolar() {	
 	}
 }
