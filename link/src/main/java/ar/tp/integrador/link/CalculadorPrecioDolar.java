@@ -3,40 +3,43 @@ package ar.tp.integrador.link;
 
 
 
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.web.client.RestTemplate;
+
 import app.Precio;
 
 
 public class CalculadorPrecioDolar implements Precio{
 
+	private Double precio;
 	
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}
 	
+	public PrecioDolar run(RestTemplate restTemplate) throws Exception {
+		PrecioDolar precio = restTemplate.getForObject(
+				"http://api-dolar-argentina.herokuapp.com/api/dolaroficial", PrecioDolar.class);
+		return precio;
+	}
 	
-	//	("http://api-dolar-argentina.herokuapp.com/api/dolaroficial");
-	@Override
-	public Float calcularPrecio(Float a) {
-		
-	
-		
-		return a;
-//		HttpClient client = HttpClient.newHttpClient();
-//		HttpRequest request=HttpRequest.newBuilder().uri(URI.create("http://api-dolar-argentina.herokuapp.com/api/dolaroficial")).build();
-//		client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-//		.thenApply(HttpResponse::body)
-//		.thenAccept(System.out::println)
-//		.join();
-////		https://www.youtube.com/watch?v=qzRKa8I36Ww
-//		return a;
-		
+	public CalculadorPrecioDolar(Double precio) {
+		super();
+		this.precio = precio;
 	}
 
-	
-
-    
-   
-    
-//	@Override
-//	public Float calcularPrecio(Float a) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	//	("http://api-dolar-argentina.herokuapp.com/api/dolaroficial");
+	@Override
+	public double calcularPrecio() {
+		RestTemplate nuevo= new RestTemplate();
+		try {
+			double valor=this.run(nuevo).getCompra();
+			return valor*precio;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0.0;
+		
+	}
 }
