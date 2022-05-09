@@ -11,25 +11,18 @@ public class Orden {
 	private ArrayList<Promocion> promociones;
 	private Boolean confirmada;
 	
-	public Orden(Integer id) {
+	public Orden() {
 		super();
-		this.id = id;
 		this.promociones = new ArrayList<Promocion>();
 		this.items=new ArrayList<Item_Orden>();
 		this.confirmada=false;
 	}
 
-	public Float costoTotal() {
-		return null;
-		
-//		return 
+	public Double costoTotal() {
+		return items.stream().mapToDouble(x->x.calcularPrecioItem()).sum();
+	 
 	}
-	public void agregarItem(Item_Orden item) {
-//		si ya lo compro le agregas la cantidads		
-//		
-//		
-//
-	}
+
 	public Integer getId() {
 		return id;
 	}

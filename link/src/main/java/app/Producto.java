@@ -6,8 +6,6 @@ public class Producto {
 	
 	private String nombre;
 	private String descripcion;
-	
-	private String categoria;
 	private Integer cantidadMinima;
 	private Precio Precio;
 	private Boolean activo;
@@ -85,13 +83,7 @@ public class Producto {
 		this.descripcion = descripcion;
 	}
 
-	public String getCategoria() {
-		return categoria;
-	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
 
 	public Integer getCantMinSolicitud() {
 		return  cantidadMinima;
@@ -101,9 +93,14 @@ public class Producto {
 		this.cantidadMinima = cantMinSolicitud;
 	}
 
-	public Producto(String nombre, Integer stock, Proveedor proveedor) {
+
+	public Producto(String nombre, String descripcion, Integer cantidadMinima, app.Precio precio, Integer stock,
+			Proveedor proveedor) {
 		super();
 		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.cantidadMinima = cantidadMinima;
+		Precio = precio;
 		this.stock = stock;
 		this.proveedor = proveedor;
 		if(this.stock>0) {

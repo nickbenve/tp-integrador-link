@@ -9,6 +9,11 @@ public class Proveedor {
 	private String cuit;
 	
 
+	public Proveedor(String nombre, String cuit) {
+		super();
+		this.nombre = nombre;
+		this.cuit = cuit;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(cuit);

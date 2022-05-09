@@ -8,9 +8,10 @@ public class Membrecia implements Promocion  {
 	private  ArrayList<Cliente> miembros;
 	private Float descuento;
 	
-	public float descuento(Orden orden) {
+	public Double descuento(Orden orden) {
 		return (1-this.getDescuento())*orden.costoTotal();
 	}
+	
 	public void utilizar() {
 	};
 
@@ -21,6 +22,7 @@ public class Membrecia implements Promocion  {
 		this.descuento = descuento;
 		miembros= new ArrayList<Cliente>();
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}

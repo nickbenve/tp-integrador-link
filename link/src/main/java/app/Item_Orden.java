@@ -1,12 +1,12 @@
 package app;
 
 public class Item_Orden {
-	private Integer cantidad;
-	private Float precio;
+	private int cantidad;
+	private double precio;
 	private Producto producto;
 	
-	public float calcularPrecioItem() {
-		return cantidad*(producto.getPrecio()).calcularPrecio(precio);
+	public Double calcularPrecioItem() {
+		return cantidad*(producto.getPrecio().calcularPrecio());
 	}
 
 	public Item_Orden(Integer cantidad, Float precio, Producto producto) {
@@ -24,11 +24,11 @@ public class Item_Orden {
 		this.cantidad = cantidad;
 	}
 
-	public Float getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(Float precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 

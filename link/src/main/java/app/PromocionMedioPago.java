@@ -13,7 +13,7 @@ public class PromocionMedioPago implements Promocion {
 		this.utilizado=false;
 	}
 	@Override
-	public float descuento(Orden orden) {
+	public Double descuento(Orden orden) {
 		return (1-this.getPorcentaje())*orden.costoTotal();
 
 	}
