@@ -4,19 +4,27 @@ import java.util.Objects;
 
 public class Item_Orden {
 	private double cantidad;
-	private double precio;
+	private Double precio;
 	private Producto producto;
 	
-	public Double calcularPrecioItem() {
-		return cantidad*(producto.getPrecio().calcularPrecio());
+	public Double calcularPrecioItem(){
+		return cantidad*(producto.getPrecio());
 	}
 
-	public Item_Orden(Integer cantidad, double precio, Producto producto) throws FaltaStockException {
+	public Item_Orden(Integer cantidad,Producto producto) throws FaltaStockException {
 		super();
 		producto.consumir(cantidad);
+		this.setPrecio(producto.getPrecio());
 		this.cantidad = cantidad;
-		this.precio = precio;
 		this.producto = producto;
+	}
+
+	public void setCantidad(double cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 
 	public void agregarCantidad(double cantidad) {

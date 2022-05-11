@@ -45,8 +45,8 @@ public class Producto {
 		this. cantidadMinima = cantidad;
 	}
 
-	public app.Precio getPrecio() {
-		return Precio;
+	public Double getPrecio() {
+		return Precio.calcularPrecio();
 	}
 
 	public void setPrecio(Precio precio) {
