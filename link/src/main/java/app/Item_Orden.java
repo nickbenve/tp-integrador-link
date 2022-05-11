@@ -11,8 +11,9 @@ public class Item_Orden {
 		return cantidad*(producto.getPrecio().calcularPrecio());
 	}
 
-	public Item_Orden(Integer cantidad, double precio, Producto producto) {
+	public Item_Orden(Integer cantidad, double precio, Producto producto) throws FaltaStockException {
 		super();
+		producto.consumir(cantidad);
 		this.cantidad = cantidad;
 		this.precio = precio;
 		this.producto = producto;

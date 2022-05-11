@@ -37,11 +37,7 @@ public class Orden {
 	}
 
 	public void agregarItem(Item_Orden itemNuevo) {
-		if(items.contains(itemNuevo)) {
-			items.stream().filter(x->x.getProducto().equals(itemNuevo.getProducto())).findFirst().get().agregarCantidad(itemNuevo.getCantidad());		
-		}else {
-			items.add(itemNuevo);
-		}
+		items.add(itemNuevo);
 	}
 	
 	public void aplicarDescuentos() {

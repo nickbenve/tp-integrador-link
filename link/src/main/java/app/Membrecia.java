@@ -13,7 +13,7 @@ public class Membrecia implements Promocion  {
 			
 			return this.getDescuento()*orden.costoTotal();
 		}else {
-//			TODO: NO ES MIEMBRO
+//			TODO PUEDE QUE EXCEPTION
 			return 0.0;
 		}
 	}

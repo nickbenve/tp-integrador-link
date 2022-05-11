@@ -13,6 +13,14 @@ public class Producto {
 	
 	private Proveedor proveedor;
 	
+	public void consumir(Integer cantidad) throws FaltaStockException {
+		if(this.getStock()>=cantidad) {
+			this.setStock(this.getStock()-cantidad);
+		}else {
+			throw new FaltaStockException("Falta stock de",nombre);
+		}
+	
+	}
 	public Integer getCantidad() {
 		return  cantidadMinima;
 	}
@@ -94,12 +102,12 @@ public class Producto {
 	}
 
 
-	public Producto(String nombre, String descripcion, Integer cantidadMinima, app.Precio precio, Integer stock,
+	public Producto(String nombre, String descripcion, app.Precio precio, Integer stock,
 			Proveedor proveedor) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.cantidadMinima = cantidadMinima;
+		this.cantidadMinima = 0;
 		Precio = precio;
 		this.stock = stock;
 		this.proveedor = proveedor;
