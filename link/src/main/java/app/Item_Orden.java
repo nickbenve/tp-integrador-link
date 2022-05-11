@@ -1,7 +1,9 @@
 package app;
 
+import java.util.Objects;
+
 public class Item_Orden {
-	private int cantidad;
+	private double cantidad;
 	private double precio;
 	private Producto producto;
 	
@@ -9,14 +11,34 @@ public class Item_Orden {
 		return cantidad*(producto.getPrecio().calcularPrecio());
 	}
 
-	public Item_Orden(Integer cantidad, Float precio, Producto producto) {
+	public Item_Orden(Integer cantidad, double precio, Producto producto) {
 		super();
 		this.cantidad = cantidad;
 		this.precio = precio;
 		this.producto = producto;
 	}
 
-	public Integer getCantidad() {
+	public void agregarCantidad(double cantidad) {
+		this.cantidad=this.cantidad+cantidad;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(producto);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item_Orden other = (Item_Orden) obj;
+		return Objects.equals(producto, other.producto);
+	}
+
+	public double getCantidad() {
 		return cantidad;
 	}
 

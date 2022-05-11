@@ -3,9 +3,10 @@ package app;
 public class PromocionMedioPago implements Promocion {
 	private String descripcion;
 	private MedioPago metodoPago;
-	private Float porcentaje;
+	private double porcentaje;
 	private Boolean utilizado;
-	public PromocionMedioPago(String descripcion, MedioPago metodoPago, Float descuentos) {
+	
+	public PromocionMedioPago(String descripcion, MedioPago metodoPago, double descuentos) {
 		super();
 		this.descripcion = descripcion;
 		this.metodoPago = metodoPago;
@@ -14,7 +15,12 @@ public class PromocionMedioPago implements Promocion {
 	}
 	@Override
 	public Double descuento(Orden orden) {
-		return (1-this.getPorcentaje())*orden.costoTotal();
+		if(orden.getMedioPago()==this.getMetodoPago()) {
+			return this.getPorcentaje()*orden.costoTotal();
+		}else {
+			return 0.0;
+		}
+
 
 	}
 	@Override
@@ -34,7 +40,7 @@ public class PromocionMedioPago implements Promocion {
 	public void setMetodoPago(MedioPago metodoPago) {
 		this.metodoPago = metodoPago;
 	}
-	public Float getPorcentaje() {
+	public double getPorcentaje() {
 		return porcentaje;
 	}
 	public void setPorcentaje(Float porcentaje) {

@@ -13,7 +13,7 @@ public class CalculadorPrecioArgentino implements Precio{
 
 
 	@Override
-	public double calcularPrecio() {
+	public Double calcularPrecio() {
 		return precio;
 	}
 }

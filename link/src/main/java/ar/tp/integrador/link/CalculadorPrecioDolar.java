@@ -11,7 +11,7 @@ import app.Precio;
 
 public class CalculadorPrecioDolar implements Precio{
 
-	private Double precio;
+	private double precio;
 	
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
@@ -23,13 +23,13 @@ public class CalculadorPrecioDolar implements Precio{
 		return precioActual;
 	}
 	
-	public CalculadorPrecioDolar(Double precio) {
+	public CalculadorPrecioDolar(double precio) {
 		super();
 		this.precio = precio;
 	}
 
 	@Override
-	public double calcularPrecio() {
+	public Double calcularPrecio() {
 		RestTemplate nuevo= new RestTemplate();
 		try {
 			double valor=this.run(nuevo).getCompra();

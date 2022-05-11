@@ -37,7 +37,7 @@ public class Producto {
 		this. cantidadMinima = cantidad;
 	}
 
-	public Precio getPrecio() {
+	public app.Precio getPrecio() {
 		return Precio;
 	}
 

@@ -9,7 +9,13 @@ public class Membrecia implements Promocion  {
 	private Float descuento;
 	
 	public Double descuento(Orden orden) {
-		return (1-this.getDescuento())*orden.costoTotal();
+		if(miembros.contains(orden.getCliente())) {
+			
+			return this.getDescuento()*orden.costoTotal();
+		}else {
+//			TODO: NO ES MIEMBRO
+			return 0.0;
+		}
 	}
 	
 	public void utilizar() {
@@ -21,6 +27,14 @@ public class Membrecia implements Promocion  {
 		this.nombre = nombre;
 		this.descuento = descuento;
 		miembros= new ArrayList<Cliente>();
+	}
+	
+	public void agregarMiembro(Cliente miembro) {
+		if(miembros.contains(miembro)) {
+			
+		}else {
+			miembros.add(miembro);
+		}
 	}
 	
 	public String getNombre() {

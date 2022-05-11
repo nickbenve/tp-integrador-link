@@ -3,6 +3,6 @@ package app;
 
 
 public interface Precio {
-	public abstract double calcularPrecio();
+	public abstract Double calcularPrecio();
 
 }

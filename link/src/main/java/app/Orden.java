@@ -10,17 +10,56 @@ public class Orden {
 	private MedioPago medioPago;
 	private ArrayList<Promocion> promociones;
 	private Boolean confirmada;
+	private Double costoConDescuento;
+	private Cliente cliente;
 	
-	public Orden() {
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Orden(Cliente cliente) {
 		super();
+		this.cliente=cliente;
+		this.fecha_creacion= LocalDate.now();
 		this.promociones = new ArrayList<Promocion>();
 		this.items=new ArrayList<Item_Orden>();
 		this.confirmada=false;
 	}
 
-	public Double costoTotal() {
+	public double costoTotal() {
 		return items.stream().mapToDouble(x->x.calcularPrecioItem()).sum();
 	 
+	}
+
+	public void agregarItem(Item_Orden itemNuevo) {
+		if(items.contains(itemNuevo)) {
+			items.stream().filter(x->x.getProducto().equals(itemNuevo.getProducto())).findFirst().get().agregarCantidad(itemNuevo.getCantidad());		
+		}else {
+			items.add(itemNuevo);
+		}
+	}
+	
+	public void aplicarDescuentos() {
+		this.setCostoConDescuento(this.costoTotal()- promociones.stream().mapToDouble(x->x.descuento(this)).sum());
+		
+	}
+	
+	public Double costoEnProductosDe(Proveedor proveedor) {
+		
+		return items.stream().filter(x->x.getProducto().getProveedor().equals(proveedor)).mapToDouble(x->x.calcularPrecioItem()).sum();
+	}
+	
+	public Double getCostoConDescuento() {
+		return costoConDescuento;
+	}
+
+	public void setCostoConDescuento(Double costoConDescuento) {
+		this.costoConDescuento = costoConDescuento;
 	}
 
 	public Integer getId() {
