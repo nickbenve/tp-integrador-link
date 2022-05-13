@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import app.Cliente;
 import app.CuponProveedor;
+import app.DescuentoMembrecia;
 import app.FaltaStockException;
 import app.Item_Orden;
 import app.MedioPago;
@@ -77,10 +78,10 @@ public class OrdenTest {
 		
 		Membrecia membre=new Membrecia("banco frances", 0.1);
 		membre.agregarMiembro(nick);
-		
+		DescuentoMembrecia promo= new DescuentoMembrecia(membre);
 		orden.agregarPromo(promoEfectivo);
 		orden.agregarPromo(cupon);
-		orden.agregarPromo(membre);
+		orden.agregarPromo(promo);
 		assertEquals(70,orden.aplicarDescuentos());
 	}
 }

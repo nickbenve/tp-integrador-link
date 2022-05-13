@@ -3,20 +3,12 @@ package app;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Membrecia implements Promocion  {
+public class Membrecia  {
 	private String nombre;
 	private  ArrayList<Cliente> miembros;
 	private Double descuento;
 	
-	public Double descuento(Orden orden) {
-		if(miembros.contains(orden.getCliente())) {
-			
-			return this.getDescuento()*orden.costoTotal();
-		}else {
-			return 0.0;
-		}
-	}
-	
+
 	public void utilizar() {
 	};
 
@@ -68,6 +60,14 @@ public class Membrecia implements Promocion  {
 			return false;
 		Membrecia other = (Membrecia) obj;
 		return Objects.equals(nombre, other.nombre);
+	}
+
+	public boolean estaAsociado(Cliente cliente) {
+		if (miembros.contains(cliente)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	
