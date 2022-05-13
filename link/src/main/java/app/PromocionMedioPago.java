@@ -1,5 +1,7 @@
 package app;
 
+import java.util.Objects;
+
 public class PromocionMedioPago implements Promocion {
 	private String descripcion;
 	private MedioPago metodoPago;
@@ -20,13 +22,29 @@ public class PromocionMedioPago implements Promocion {
 		}else {
 			return 0.0;
 		}
-
-
 	}
+	
 	@Override
 	public void utilizar() {
 		this.utilizado=true;
 		
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, metodoPago);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PromocionMedioPago other = (PromocionMedioPago) obj;
+		return Objects.equals(descripcion, other.descripcion) && metodoPago == other.metodoPago;
 	}
 	public String getDescripcion() {
 		return descripcion;

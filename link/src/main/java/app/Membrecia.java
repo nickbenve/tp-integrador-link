@@ -6,14 +6,13 @@ import java.util.Objects;
 public class Membrecia implements Promocion  {
 	private String nombre;
 	private  ArrayList<Cliente> miembros;
-	private Float descuento;
+	private Double descuento;
 	
 	public Double descuento(Orden orden) {
 		if(miembros.contains(orden.getCliente())) {
 			
 			return this.getDescuento()*orden.costoTotal();
 		}else {
-//			TODO PUEDE QUE EXCEPTION
 			return 0.0;
 		}
 	}
@@ -22,7 +21,7 @@ public class Membrecia implements Promocion  {
 	};
 
 	
-	public Membrecia(String nombre, Float descuento) {
+	public Membrecia(String nombre, Double descuento) {
 		super();
 		this.nombre = nombre;
 		this.descuento = descuento;
@@ -49,10 +48,10 @@ public class Membrecia implements Promocion  {
 	public void setMiembros(ArrayList<Cliente> miembros) {
 		this.miembros = miembros;
 	}
-	public Float getDescuento() {
+	public Double getDescuento() {
 		return descuento;
 	}
-	public void setDescuento(Float descuento) {
+	public void setDescuento(Double descuento) {
 		this.descuento = descuento;
 	}
 	@Override
