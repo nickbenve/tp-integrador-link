@@ -2,6 +2,8 @@ package app;
 
 import java.util.Objects;
 
+import excepciones.FaltaStockException;
+
 public class Producto {
 	
 	private String nombre;

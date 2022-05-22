@@ -15,10 +15,14 @@ public class Cliente implements Rol{
 		compras= new ArrayList<Orden>();
 	}
 
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(dni, nombre);
+		return Objects.hash(dni);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -29,8 +33,10 @@ public class Cliente implements Rol{
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(dni, other.dni) && Objects.equals(nombre, other.nombre);
+		return Objects.equals(dni, other.dni);
 	}
+
+
 
 	public String getNombre() {
 		return nombre;

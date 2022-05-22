@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import app.Cliente;
 import app.CuponProveedor;
 import app.DescuentoMembrecia;
-import app.FaltaStockException;
 import app.Item_Orden;
 import app.MedioPago;
 import app.Membrecia;
@@ -16,6 +15,7 @@ import app.Orden;
 import app.Producto;
 import app.PromocionMedioPago;
 import app.Proveedor;
+import excepciones.FaltaStockException;
 
 
 

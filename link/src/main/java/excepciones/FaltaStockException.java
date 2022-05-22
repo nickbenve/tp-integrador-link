@@ -1,4 +1,4 @@
-package app;
+package excepciones;
 
 public class FaltaStockException extends Exception {
 

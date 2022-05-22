@@ -1,4 +1,4 @@
-package repositorios;
+package excepciones;
 
 public class ProductoInexistenteExepction extends Exception {
 
