@@ -31,8 +31,6 @@ public class OrdenTest {
  * 
  * 
  */
-	
-	
 	@Test
 	public void faltaStock() throws Exception{
 			Producto producto=new Producto("Arroz","nick",new CalculadorPrecioArgentino(5.0),4,new Proveedor("hola","hola"));

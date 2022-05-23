@@ -9,6 +9,12 @@ public class Proveedor {
 	private String cuit;
 	
 
+	public String getCuit() {
+		return cuit;
+	}
+	public void setCuit(String cuit) {
+		this.cuit = cuit;
+	}
 	public Proveedor(String nombre, String cuit) {
 		super();
 		this.nombre = nombre;

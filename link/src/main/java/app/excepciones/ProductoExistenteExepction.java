@@ -1,20 +1,12 @@
 package app.excepciones;
 
-import app.dominio.Producto;
+
 
 public class ProductoExistenteExepction extends Exception {
 
-	private Producto producto;
-	
-	
-	
 	
 	private static final long serialVersionUID = 1L;
 
-	public ProductoExistenteExepction(Producto producto) {
-	    this.producto=producto;
-		
-	}
 
 	public ProductoExistenteExepction(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {

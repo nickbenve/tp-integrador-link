@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import app.excepciones.ProductoExistenteExepction;
 import app.excepciones.ProveedorExistenteException;
 import app.excepciones.ProveedorInexistenteException;
-import app.repositorios.RepoProductosEnMemoria;
+
 
 public class Vendedor {
 	private String nombre;

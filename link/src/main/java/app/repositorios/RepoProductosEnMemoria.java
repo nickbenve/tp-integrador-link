@@ -33,7 +33,7 @@ public class RepoProductosEnMemoria implements RepoProducto{
 	
 	public void save(Producto producto) throws ProductoExistenteExepction {
 		if(productos.contains(producto)) {
-			throw new ProductoExistenteExepction(producto);
+			throw new ProductoExistenteExepction("El proveedor "+producto.getProveedor().getNombre()+"ya entrega al producto"+producto.getNombre());
 		}else {
 			productos.add(producto);
 		}
