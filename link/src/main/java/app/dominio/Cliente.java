@@ -4,12 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Cliente implements Rol{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Cliente extends Persona{
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
+	
 	private String nombre;
 	private String dni;
 	private List<Orden> compras;
 	
-	public Cliente(String nombre, String dni) {
+	
+	public Cliente(String user,String contra,String nombre, String dni) {
+		super(user, contra);
 		this.nombre = nombre;
 		this.dni = dni;
 		compras= new ArrayList<Orden>();

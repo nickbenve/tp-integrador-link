@@ -2,11 +2,27 @@ package app.dominio;
 
 import java.time.LocalDate;
 
-public class Admin implements Rol{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Admin extends Persona{
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
 	private String nombre;
 	private String mail;
 	private String direccion;
 	private LocalDate fechaIngreso;
+
+	
+	public Admin(String usuario, String contrasenia,String nombre) {
+		super(usuario, contrasenia);
+		fechaIngreso=LocalDate.now();
+	}
 	
 	public String getNombre() {
 		return nombre;
@@ -32,6 +48,8 @@ public class Admin implements Rol{
 	public void setFechaIngreso(LocalDate fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
+	
+	
 	public void crearMembrecia(Membrecia membrecia) {
 //		:TODO
 		

@@ -48,7 +48,7 @@ public class OrdenTest {
 		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioArgentino(50),20,proveedor);
 		Producto producto2=new Producto("Leche","1 litro",new CalculadorPrecioArgentino(100),25,new Proveedor("Serenicima","1111111"));
 		
-		Orden orden= new Orden(new Cliente("nick","1"));
+		Orden orden= new Orden(new Cliente("a","a","nick","1"));
 		Item_Orden i1= new Item_Orden(2, producto);
 		Item_Orden i2= new Item_Orden(3,producto2);
 		
@@ -65,7 +65,7 @@ public class OrdenTest {
 		Proveedor proveedor=new Proveedor("nick", "11111");
 		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioArgentino(50),20,proveedor);
 	
-		Cliente nick= new Cliente("nick","1");
+		Cliente nick= new Cliente("a","a","nick","1");
 		Orden orden= new Orden(nick);
 		
 		Item_Orden i1= new Item_Orden(2, producto);

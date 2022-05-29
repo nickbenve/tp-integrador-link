@@ -3,12 +3,21 @@ package app.dominio;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import app.excepciones.ProductoExistenteExepction;
 import app.excepciones.ProveedorExistenteException;
 import app.excepciones.ProveedorInexistenteException;
 
-
-public class Vendedor {
+@Entity
+public class Vendedor extends Persona{
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
 	private String nombre;
 	private Integer legajo;
 	private LocalDate fechaIngreso;
@@ -17,8 +26,8 @@ public class Vendedor {
 	
 	
 
-	public Vendedor(String nombre, Integer legajo) {
-		super();
+	public Vendedor(String user, String contra,String nombre, Integer legajo) {
+		super(user,contra);
 		this.nombre = nombre;
 		this.legajo = legajo;
 		this.fechaIngreso=LocalDate.now();

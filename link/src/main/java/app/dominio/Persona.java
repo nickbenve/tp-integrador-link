@@ -3,48 +3,28 @@ package app.dominio;
 import java.util.Objects;
 
 public abstract class Persona {
-	private final Integer idPersona;
-	private String nombre;
-	private Integer dni;
+	private String usuario;
+	private String contrasenia;
 	
-	public Persona(Integer idPersona, String nombre, Integer dni) {
+	public String getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	public String getContrasenia() {
+		return contrasenia;
+	}
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+	public Persona(String usuario, String contrasenia) {
 		super();
-		this.idPersona = idPersona;
-		this.nombre = nombre;
-		this.dni = dni;
+		this.usuario = usuario;
+		this.contrasenia = contrasenia;
 	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public Integer getDni() {
-		return dni;
-	}
-	public void setDni(Integer dni) {
-		this.dni = dni;
-	}
-	public Integer getIdPersona() {
-		return idPersona;
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(idPersona);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Persona other = (Persona) obj;
-		return Objects.equals(idPersona, other.idPersona);
-	}
-
 	
+
 	
 	
 }
