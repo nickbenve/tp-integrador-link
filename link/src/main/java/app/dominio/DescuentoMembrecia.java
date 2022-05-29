@@ -1,5 +1,6 @@
 package app.dominio;
 
+
 public class DescuentoMembrecia implements Promocion{
 	private Membrecia membrecia;
 	

@@ -2,7 +2,14 @@ package app.dominio;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class PromocionMedioPago implements Promocion {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private String descripcion;
 	private MedioPago metodoPago;
 	private double porcentaje;

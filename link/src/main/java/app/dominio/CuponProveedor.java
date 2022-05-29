@@ -1,6 +1,15 @@
 package app.dominio;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class CuponProveedor implements Promocion {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
 	private Double valor;
 	private Proveedor proveedor;
 	private boolean utilizado;

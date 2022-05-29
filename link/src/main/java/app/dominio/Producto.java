@@ -2,9 +2,18 @@ package app.dominio;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import app.excepciones.FaltaStockException;
 
+
+@Entity
 public class Producto {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	
 	private String nombre;
 	private String descripcion;
