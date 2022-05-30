@@ -28,7 +28,7 @@ public class Producto {
 		if(this.getStock()>=cantidad) {
 			this.setStock(this.getStock()-cantidad);
 		}else {
-			throw new FaltaStockException("Falta stock de",nombre);
+			throw new FaltaStockException("Falta stock de"+nombre);
 		}
 	
 	}
