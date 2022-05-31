@@ -1,7 +1,18 @@
 package app.dominio;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+@Entity
 public class DescuentoMembrecia implements Promocion{
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
+	
+	@OneToOne
 	private Membrecia membrecia;
 	
 	public Double descuento(Orden orden) {

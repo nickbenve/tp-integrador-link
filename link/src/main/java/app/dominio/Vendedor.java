@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import app.excepciones.ProductoExistenteExepction;
 import app.excepciones.ProveedorExistenteException;
@@ -21,7 +23,9 @@ public class Vendedor extends Persona{
 	private String nombre;
 	private Integer legajo;
 	private LocalDate fechaIngreso;
+	@ManyToMany
 	private ArrayList<Proveedor> proveedores;
+	@OneToMany
 	private ArrayList<Producto> productos;
 	
 	

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 @Entity
@@ -19,7 +20,7 @@ public class Cliente extends Persona{
 	
 	private String nombre;
 	private String dni;
-	@Transient
+	@ManyToOne
 	private List<Orden> compras;
 	
 	

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CuponProveedor implements Promocion {
@@ -11,6 +12,8 @@ public class CuponProveedor implements Promocion {
 	private Integer id;
 	
 	private Double valor;
+	
+	@ManyToOne
 	private Proveedor proveedor;
 	private boolean utilizado;
 	

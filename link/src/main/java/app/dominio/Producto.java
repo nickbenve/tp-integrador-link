@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import app.excepciones.FaltaStockException;
 
@@ -18,17 +20,21 @@ public class Producto {
 	private String nombre;
 	private String descripcion;
 	private Integer cantidadMinima;
+	
+	@OneToOne
 	private Precio Precio;
+	
 	private Boolean activo;
 	private Integer stock;
 	
+	@ManyToOne
 	private Proveedor proveedor;
 	
 	public void consumir(Integer cantidad) throws FaltaStockException {
 		if(this.getStock()>=cantidad) {
 			this.setStock(this.getStock()-cantidad);
 		}else {
-			throw new FaltaStockException("Falta stock de"+nombre);
+			throw new FaltaStockException("Falta stock de",nombre);
 		}
 	
 	}
