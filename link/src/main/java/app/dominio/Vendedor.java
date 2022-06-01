@@ -15,7 +15,7 @@ import app.excepciones.ProveedorExistenteException;
 import app.excepciones.ProveedorInexistenteException;
 
 @Entity
-public class Vendedor extends Persona{
+public class Vendedor implements Rol{
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -28,10 +28,16 @@ public class Vendedor extends Persona{
 	@OneToMany
 	private ArrayList<Producto> productos;
 	
-	
+	public Integer getId() {
+		return id;
+	}
 
-	public Vendedor(String user, String contra,String nombre, Integer legajo) {
-		super(user,contra);
+	protected Vendedor() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Vendedor(String nombre, Integer legajo) {
 		this.nombre = nombre;
 		this.legajo = legajo;
 		this.fechaIngreso=LocalDate.now();

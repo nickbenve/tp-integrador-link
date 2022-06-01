@@ -8,22 +8,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Admin extends Persona{
+public class Admin implements Rol{
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	private String nombre;
 	private String mail;
-	private String direccion;
 	private LocalDate fechaIngreso;
 
 	
-	public Admin(String usuario, String contrasenia,String nombre) {
-		super(usuario, contrasenia);
-		fechaIngreso=LocalDate.now();
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Admin(String nombre,String mail) {
+		this.nombre=nombre;
+		this.mail=mail;
+		this.fechaIngreso=LocalDate.now();
 	}
 	
+	protected Admin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -36,12 +49,7 @@ public class Admin extends Persona{
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public String getDireccion() {
-		return direccion;
-	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
+
 	public LocalDate getFechaIngreso() {
 		return fechaIngreso;
 	}

@@ -15,8 +15,11 @@ public class CuponProveedor implements Promocion {
 	
 	@ManyToOne
 	private Proveedor proveedor;
-	private boolean utilizado;
 	
+	private boolean utilizado;
+	public Integer getId() {
+		return id;
+	}
 	
 	public Double getValor() {
 		return valor;
@@ -36,25 +39,33 @@ public class CuponProveedor implements Promocion {
 	public void setUtilizado(boolean utilizado) {
 		this.utilizado = utilizado;
 	}
+	
 	@Override
 	public Double descuento(Orden orden) {
 		if(this.getUtilizado()) {
-			//TODO YA ESTA USADO
+			return 0.0;
 		}else {
 			if(this.getValor()<=orden.costoEnProductosDe(proveedor)) {
+				this.utilizar();
 				return this.getValor();
 			}else {
+				this.utilizar();
 				return orden.costoEnProductosDe(proveedor);
 			}
 		}
-		// TODO Auto-generated method stub
-		return null;
 	}
+	
 	public CuponProveedor(Double valor, Proveedor proveedor) {
 		super();
 		this.valor = valor;
 		this.proveedor = proveedor;
 		this.utilizado=false;
+	}
+	
+	
+	protected CuponProveedor() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public void utilizar() {

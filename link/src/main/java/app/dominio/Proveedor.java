@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Proveedor {
+public class Proveedor implements Rol {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
@@ -23,6 +23,14 @@ public class Proveedor {
 	}
 	public void setCuit(String cuit) {
 		this.cuit = cuit;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	protected Proveedor() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public Proveedor(String nombre, String cuit) {
 		super();

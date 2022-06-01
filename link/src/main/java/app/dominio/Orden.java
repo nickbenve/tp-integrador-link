@@ -3,25 +3,37 @@ package app.dominio;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
+@Entity
 public class Orden {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
 	private LocalDate fecha_creacion;
 	
 	@OneToMany
 	private ArrayList<Item_Orden> items;
+
 	@ManyToOne
 	private MedioPago medioPago;
+	
 	@ManyToMany
 	private ArrayList<Promocion> promociones;
+	
 	private Boolean confirmada;
+	
 	@ManyToOne
 	private Cliente cliente;
 	
-	
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -41,6 +53,12 @@ public class Orden {
 		this.promociones = new ArrayList<Promocion>();
 		this.items=new ArrayList<Item_Orden>();
 		this.confirmada=false;
+	}
+
+	
+	protected Orden() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Double costoTotal() {

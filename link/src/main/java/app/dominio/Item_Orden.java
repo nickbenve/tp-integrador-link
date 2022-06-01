@@ -12,6 +12,7 @@ import app.excepciones.FaltaStockException;
 
 @Entity
 public class Item_Orden {
+	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
@@ -32,6 +33,14 @@ public class Item_Orden {
 		this.cantidad = cantidad;
 		this.producto = producto;
 	}
+	public Integer getId() {
+		return id;
+	}
+	
+	protected Item_Orden() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public void setCantidad(double cantidad) {
 		this.cantidad = cantidad;
@@ -44,21 +53,10 @@ public class Item_Orden {
 	public void agregarCantidad(double cantidad) {
 		this.cantidad=this.cantidad+cantidad;
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(producto);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Item_Orden other = (Item_Orden) obj;
-		return Objects.equals(producto, other.producto);
 	}
 
 	public double getCantidad() {

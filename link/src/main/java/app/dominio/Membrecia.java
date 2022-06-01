@@ -20,17 +20,20 @@ public class Membrecia  {
 	
 	@ManyToMany
 	private  ArrayList<Cliente> miembros;
-	private Double descuento;
 	
+		
+	public Membrecia() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	public void utilizar() {
-	};
+	public Integer getId() {
+		return id;
+	}
 
-	
-	public Membrecia(String nombre, Double descuento) {
+	public Membrecia(String nombre) {
 		super();
 		this.nombre = nombre;
-		this.descuento = descuento;
 		miembros= new ArrayList<Cliente>();
 	}
 	
@@ -54,12 +57,7 @@ public class Membrecia  {
 	public void setMiembros(ArrayList<Cliente> miembros) {
 		this.miembros = miembros;
 	}
-	public Double getDescuento() {
-		return descuento;
-	}
-	public void setDescuento(Double descuento) {
-		this.descuento = descuento;
-	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(nombre);

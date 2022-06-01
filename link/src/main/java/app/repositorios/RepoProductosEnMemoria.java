@@ -11,7 +11,7 @@ import app.dominio.Proveedor;
 import app.excepciones.ProductoExistenteExepction;
 import app.excepciones.ProductoInexistenteExepction;
 import app.precios.CalculadorPrecioArgentino;
-
+/*
 @Repository
 public class RepoProductosEnMemoria implements RepoProducto{
 	
@@ -48,3 +48,4 @@ public class RepoProductosEnMemoria implements RepoProducto{
 	}
 	
 }	
+*/

@@ -16,15 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import app.dominio.Producto;
-import app.repositorios.RepoProducto;
 
 
 
+/*
 @RestController
 @RequestMapping("/producto")
+
 public class ProductoController {
-	@Autowired
-	private RepoProducto repo;
+	//@Autowired
+//	private RepoProducto repo;
 	
 	@GetMapping("")
 
@@ -46,3 +47,4 @@ public class ProductoController {
 	}
 	
 }
+*/

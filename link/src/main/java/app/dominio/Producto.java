@@ -30,6 +30,9 @@ public class Producto {
 	@ManyToOne
 	private Proveedor proveedor;
 	
+	public Integer getId() {
+		return id;
+	}
 	public void consumir(Integer cantidad) throws FaltaStockException {
 		if(this.getStock()>=cantidad) {
 			this.setStock(this.getStock()-cantidad);
@@ -91,6 +94,10 @@ public class Producto {
 
 	
 
+	protected Producto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getNombre() {
 		return nombre;
 	}

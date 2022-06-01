@@ -18,12 +18,16 @@ public class PromocionMedioPago implements Promocion {
 	private double porcentaje;
 	private Boolean utilizado;
 	
-	public PromocionMedioPago(String descripcion, MedioPago metodoPago, double descuentos) {
+	public PromocionMedioPago(String descripcion, MedioPago metodoPago, double descuento) {
 		super();
 		this.descripcion = descripcion;
 		this.metodoPago = metodoPago;
-		this.porcentaje = descuentos;
+		this.porcentaje = descuento;
 		this.utilizado=false;
+	}
+	
+	public Integer getId() {
+		return id;
 	}
 	@Override
 	public Double descuento(Orden orden) {
@@ -34,6 +38,12 @@ public class PromocionMedioPago implements Promocion {
 		}
 	}
 	
+	
+	
+	protected PromocionMedioPago() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public void utilizar() {
 		this.utilizado=true;

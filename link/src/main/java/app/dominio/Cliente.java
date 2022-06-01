@@ -9,10 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
-public class Cliente extends Persona{
+public class Cliente implements Rol{
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -20,38 +21,24 @@ public class Cliente extends Persona{
 	
 	private String nombre;
 	private String dni;
-	@ManyToOne
+	
+	@OneToMany
 	private List<Orden> compras;
+	public Integer getId() {
+		return id;
+	}
 	
-	
-	public Cliente(String user,String contra,String nombre, String dni) {
-		super(user, contra);
+	public Cliente(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
 		compras= new ArrayList<Orden>();
 	}
 
 
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(dni);
+	protected Cliente() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cliente other = (Cliente) obj;
-		return Objects.equals(dni, other.dni);
-	}
-
 
 
 	public String getNombre() {

@@ -17,6 +17,7 @@ import app.dominio.PromocionMedioPago;
 import app.dominio.Proveedor;
 import app.excepciones.FaltaStockException;
 import app.precios.CalculadorPrecioArgentino;
+import app.precios.CalculadorPrecioDolar;
 
 
 
@@ -48,7 +49,7 @@ public class OrdenTest {
 		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioArgentino(50),20,proveedor);
 		Producto producto2=new Producto("Leche","1 litro",new CalculadorPrecioArgentino(100),25,new Proveedor("Serenicima","1111111"));
 		
-		Orden orden= new Orden(new Cliente("a","a","nick","1"));
+		Orden orden= new Orden(new Cliente("nick","1"));
 		Item_Orden i1= new Item_Orden(2, producto);
 		Item_Orden i2= new Item_Orden(3,producto2);
 		
@@ -59,13 +60,29 @@ public class OrdenTest {
 		
 	}
 	
+	
+//	@Test
+//	public void calculoCostoOrdenSinDescDolar()throws Exception{
+//		Proveedor proveedor=new Proveedor("nick", "11111");
+//		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioDolar(1.0),20,proveedor);
+//	
+//		
+//		Orden orden= new Orden(new Cliente("nick","1"));
+//		Item_Orden i1= new Item_Orden(1, producto);
+//		
+//		orden.agregarItem(i1);
+//			
+//		assertEquals(400,orden.costoTotal());
+//		
+//	}
+	
 	@Test
 	public void calculoCostoOrdenConDesc() throws Exception{
 		
 		Proveedor proveedor=new Proveedor("nick", "11111");
 		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioArgentino(50),20,proveedor);
 	
-		Cliente nick= new Cliente("a","a","nick","1");
+		Cliente nick= new Cliente("nick","1");
 		Orden orden= new Orden(nick);
 		
 		Item_Orden i1= new Item_Orden(2, producto);
@@ -75,9 +92,9 @@ public class OrdenTest {
 		CuponProveedor cupon=new CuponProveedor(10.0, proveedor);
 		PromocionMedioPago promoEfectivo= new PromocionMedioPago("10% en efectivo", MedioPago.EFECTIVO, 0.10);
 		
-		Membrecia membre=new Membrecia("banco frances", 0.1);
+		Membrecia membre=new Membrecia("banco frances");
 		membre.agregarMiembro(nick);
-		DescuentoMembrecia promo= new DescuentoMembrecia(membre);
+		DescuentoMembrecia promo= new DescuentoMembrecia(membre,0.1);
 		orden.agregarPromo(promoEfectivo);
 		orden.agregarPromo(cupon);
 		orden.agregarPromo(promo);
