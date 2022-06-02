@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Proveedor implements Rol {
+public class Proveedor extends Rol {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	

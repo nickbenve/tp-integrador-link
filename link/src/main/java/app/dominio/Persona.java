@@ -1,6 +1,7 @@
 package app.dominio;
 
-import java.util.ArrayList;
+import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Persona {
 	private String contrasenia;
 	
 	@OneToMany
-	private ArrayList<Rol> roles;
+	private List<Rol> roles;
 
 	public String getUsuario() {
 		return usuario;
@@ -37,16 +38,16 @@ public class Persona {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
-	public Persona(String usuario, String contrasenia,ArrayList<Rol> roles) {
+	public Persona(String usuario, String contrasenia,List<Rol> roles) {
 		super();
 		this.usuario = usuario;
 		this.contrasenia = contrasenia;
 		this.roles=roles;
 	}
-	public ArrayList<Rol> getRoles() {
+	public List<Rol> getRoles() {
 		return roles;
 	}
-	public void setRoles(ArrayList<Rol> roles) {
+	public void setRoles(List<Rol> roles) {
 		this.roles = roles;
 	}
 	protected Persona() {

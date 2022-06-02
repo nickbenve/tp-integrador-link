@@ -1,6 +1,7 @@
 package app.dominio;
 
-import java.util.ArrayList;
+
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -8,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Transient;
 
 @Entity
 public class Membrecia  {
@@ -19,7 +19,7 @@ public class Membrecia  {
 	private String nombre;
 	
 	@ManyToMany
-	private  ArrayList<Cliente> miembros;
+	private  List<Cliente> miembros;
 	
 		
 	public Membrecia() {
@@ -34,7 +34,6 @@ public class Membrecia  {
 	public Membrecia(String nombre) {
 		super();
 		this.nombre = nombre;
-		miembros= new ArrayList<Cliente>();
 	}
 	
 	public void agregarMiembro(Cliente miembro) {
@@ -51,10 +50,10 @@ public class Membrecia  {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public ArrayList<Cliente> getMiembros() {
+	public List<Cliente> getMiembros() {
 		return miembros;
 	}
-	public void setMiembros(ArrayList<Cliente> miembros) {
+	public void setMiembros(List<Cliente> miembros) {
 		this.miembros = miembros;
 	}
 

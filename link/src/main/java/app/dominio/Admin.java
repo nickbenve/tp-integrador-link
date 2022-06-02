@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Admin implements Rol{
+public class Admin extends Rol{
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -58,21 +58,6 @@ public class Admin implements Rol{
 	}
 	
 	
-	public void crearMembrecia(Membrecia membrecia) {
-//		:TODO
-		
-//		if(RepoMembreciaEnMemoria.contains(membrecia)) {
-//			tirar esepctionj
-//		}else {
-//			agregarmembrecia
-//		}
-	}
-	public void darDeBajaMiembrecia(Membrecia membrecia) {
-//		if(RepoMembreciaEnMemoria.contains(membrecia)) {
-//		dar de baja
-//	}else {
-//		tirar exception
-//	}		
-	}
+
 
 }

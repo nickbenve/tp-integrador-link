@@ -61,20 +61,20 @@ public class OrdenTest {
 	}
 	
 	
-//	@Test
-//	public void calculoCostoOrdenSinDescDolar()throws Exception{
-//		Proveedor proveedor=new Proveedor("nick", "11111");
-//		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioDolar(1.0),20,proveedor);
-//	
-//		
-//		Orden orden= new Orden(new Cliente("nick","1"));
-//		Item_Orden i1= new Item_Orden(1, producto);
-//		
-//		orden.agregarItem(i1);
-//			
-//		assertEquals(400,orden.costoTotal());
-//		
-//	}
+	@Test
+	public void calculoCostoOrdenSinDescDolar()throws Exception{
+		Proveedor proveedor=new Proveedor("nick", "11111");
+		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioDolar(1.0),20,proveedor);
+	
+		
+		Orden orden= new Orden(new Cliente("nick","1"));
+		Item_Orden i1= new Item_Orden(1, producto);
+		
+		orden.agregarItem(i1);
+			
+		assertEquals(400,orden.costoTotal());
+		
+	}
 	
 	@Test
 	public void calculoCostoOrdenConDesc() throws Exception{

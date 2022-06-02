@@ -1,6 +1,6 @@
 package app.dominio;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
-public class Cliente implements Rol{
+public class Cliente extends Rol{
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -31,7 +31,6 @@ public class Cliente implements Rol{
 	public Cliente(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
-		compras= new ArrayList<Orden>();
 	}
 
 

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class DescuentoMembrecia implements Promocion{
+public class DescuentoMembrecia  extends Promocion{
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;

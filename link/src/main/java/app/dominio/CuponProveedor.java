@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class CuponProveedor implements Promocion {
+public class CuponProveedor extends Promocion {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	

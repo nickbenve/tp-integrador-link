@@ -12,10 +12,12 @@ import javax.persistence.Id;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 
+
 @Entity 
 public class CotizacionDolar {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
 	public Double valor;
 	public LocalDateTime ultimaActualizacion;
 	
@@ -24,12 +26,26 @@ public class CotizacionDolar {
 		LocalDate hoy = LocalDate.now();
         LocalTime ahora = LocalTime.now();
       
-    	this.ultimaActualizacion = LocalDateTime.of(hoy,ahora).minusMinutes(40);
-		this.valor = this.calcularPrecio();
-
+    	this.ultimaActualizacion = LocalDateTime.of(hoy,ahora);
+		this.valor = this.inicializar();
 
 	}
 
+	public Double inicializar() {
+		RestTemplate nuevo= new RestTemplate();
+		try {
+			LocalDate hoy = LocalDate.now();
+	        LocalTime ahora = LocalTime.now();
+	    	this.ultimaActualizacion = LocalDateTime.of(hoy,ahora);
+			double valor=this.run(nuevo).getCompra();
+			return valor;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0.0;
+		
+	}
 	public Double getValor() {
 		return valor;
 	}

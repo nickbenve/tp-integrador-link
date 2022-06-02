@@ -2,6 +2,7 @@ package app.dominio;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ import app.excepciones.ProveedorExistenteException;
 import app.excepciones.ProveedorInexistenteException;
 
 @Entity
-public class Vendedor implements Rol{
+public class Vendedor extends Rol{
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -24,9 +25,9 @@ public class Vendedor implements Rol{
 	private Integer legajo;
 	private LocalDate fechaIngreso;
 	@ManyToMany
-	private ArrayList<Proveedor> proveedores;
+	private List<Proveedor> proveedores;
 	@OneToMany
-	private ArrayList<Producto> productos;
+	private List<Producto> productos;
 	
 	public Integer getId() {
 		return id;
@@ -40,10 +41,7 @@ public class Vendedor implements Rol{
 	public Vendedor(String nombre, Integer legajo) {
 		this.nombre = nombre;
 		this.legajo = legajo;
-		this.fechaIngreso=LocalDate.now();
-		this.proveedores=new ArrayList<>();
-		this.productos=new ArrayList<>();
-		
+		this.fechaIngreso=LocalDate.now();		
 	}
 
 	public void asociarProovedor(Proveedor proveedor) throws ProveedorExistenteException {

@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import app.dominio.Precio;
 
 @Entity
-public class CalculadorPrecioDolar implements Precio{
+public class CalculadorPrecioDolar extends Precio{
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -30,6 +30,10 @@ public class CalculadorPrecioDolar implements Precio{
 		cotizador=new CotizacionDolar();
 		this.precio = precio;
 	}
+	protected CalculadorPrecioDolar() {
+		super();
+	}
+	
 
 	@Override
 	public Double calcularPrecio() {

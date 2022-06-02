@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import app.dominio.Precio;
 
 @Entity
-public class CalculadorPrecioArgentino implements Precio{
+public class CalculadorPrecioArgentino extends Precio{
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -19,7 +19,9 @@ public class CalculadorPrecioArgentino implements Precio{
 		this.precio = precio;
 	}
 
-
+	protected CalculadorPrecioArgentino() {
+		super();
+	}
 	@Override
 	public Double calcularPrecio() {
 		return precio;
