@@ -6,9 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 
-@Entity
-public class Proveedor extends Rol {
+
+@Entity 
+public class Proveedor {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	

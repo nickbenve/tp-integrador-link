@@ -24,6 +24,7 @@ public class Cliente extends Rol{
 	
 	@OneToMany
 	private List<Orden> compras;
+	
 	public Integer getId() {
 		return id;
 	}

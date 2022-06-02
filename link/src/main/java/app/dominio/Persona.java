@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,7 +24,7 @@ public class Persona {
 	@JsonIgnore
 	private String contrasenia;
 	
-	@OneToMany
+	@OneToMany 
 	private List<Rol> roles;
 
 	public String getUsuario() {

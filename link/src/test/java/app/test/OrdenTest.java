@@ -6,15 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import app.dominio.Cliente;
-import app.dominio.CuponProveedor;
-import app.dominio.DescuentoMembrecia;
 import app.dominio.Item_Orden;
 import app.dominio.MedioPago;
 import app.dominio.Membrecia;
 import app.dominio.Orden;
 import app.dominio.Producto;
-import app.dominio.PromocionMedioPago;
 import app.dominio.Proveedor;
+import app.dominio.descuentos.CuponProveedor;
+import app.dominio.descuentos.DescuentoMembrecia;
+import app.dominio.descuentos.PromocionMedioPago;
 import app.excepciones.FaltaStockException;
 import app.precios.CalculadorPrecioArgentino;
 import app.precios.CalculadorPrecioDolar;

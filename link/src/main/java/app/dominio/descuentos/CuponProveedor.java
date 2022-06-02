@@ -1,10 +1,14 @@
-package app.dominio;
+package app.dominio.descuentos;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import app.dominio.Orden;
+import app.dominio.Promocion;
+import app.dominio.Proveedor;
 
 @Entity
 public class CuponProveedor extends Promocion {

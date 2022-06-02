@@ -1,4 +1,4 @@
-package app.dominio;
+package app.dominio.descuentos;
 
 import java.util.Objects;
 
@@ -8,6 +8,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import app.dominio.MedioPago;
+import app.dominio.Orden;
+import app.dominio.Promocion;
 
 
 @Entity

@@ -1,13 +1,12 @@
 package app.repositorios;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import app.dominio.Producto;
 import app.dominio.Proveedor;
-import app.excepciones.CuilRepetidoExepction;
-import app.excepciones.ProductoExistenteExepction;
 
+public interface RepoProveedor extends PagingAndSortingRepository<Proveedor, Integer>{
+
+}
 /*
 public class RepoProveeEnMemoria implements RepoProveedor{
 
