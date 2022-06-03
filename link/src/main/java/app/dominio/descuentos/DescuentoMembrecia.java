@@ -13,8 +13,7 @@ import app.dominio.Promocion;
 @Entity
 public class DescuentoMembrecia  extends Promocion{
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+
 	
 	
 	@OneToOne
@@ -29,9 +28,7 @@ public class DescuentoMembrecia  extends Promocion{
 			return 0.0;
 		}
 	}
-	public Integer getId() {
-		return id;
-	}
+
 	
 	protected DescuentoMembrecia() {
 		super();

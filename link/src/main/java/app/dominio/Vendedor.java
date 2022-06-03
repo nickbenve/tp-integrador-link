@@ -15,9 +15,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Vendedor extends Rol{
-	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+
 	
 	private String nombre;
 	private Integer legajo;

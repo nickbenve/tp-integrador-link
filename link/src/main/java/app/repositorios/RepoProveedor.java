@@ -1,9 +1,12 @@
 package app.repositorios;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import app.dominio.Proveedor;
 
+
+@RepositoryRestResource(path="proveedores")
 public interface RepoProveedor extends PagingAndSortingRepository<Proveedor, Integer>{
 
 }

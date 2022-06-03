@@ -7,24 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class Admin extends Rol{
-	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
+		
 	private String nombre;
 	private String mail;
 	private LocalDate fechaIngreso;
-
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public Admin(String nombre,String mail) {
 		this.nombre=nombre;

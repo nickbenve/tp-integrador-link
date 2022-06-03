@@ -12,18 +12,14 @@ import app.dominio.Proveedor;
 
 @Entity
 public class CuponProveedor extends Promocion {
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
+
 	private Double valor;
 	
 	@ManyToOne
 	private Proveedor proveedor;
 	
 	private boolean utilizado;
-	public Integer getId() {
-		return id;
-	}
+
 	
 	public Double getValor() {
 		return valor;
