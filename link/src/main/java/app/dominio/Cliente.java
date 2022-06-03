@@ -15,9 +15,7 @@ import javax.persistence.Transient;
 @Entity
 public class Cliente extends Rol{
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
+
 	
 	private String nombre;
 	private String dni;

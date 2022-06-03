@@ -16,8 +16,7 @@ import app.dominio.Promocion;
 
 @Entity
 public class PromocionMedioPago  extends Promocion{
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+
 	private String descripcion;
 	
 	@Enumerated(EnumType.STRING)
@@ -34,9 +33,6 @@ public class PromocionMedioPago  extends Promocion{
 		this.utilizado=false;
 	}
 	
-	public Integer getId() {
-		return id;
-	}
 	@Override
 	public Double descuento(Orden orden) {
 		if(orden.getMedioPago()==this.getMetodoPago()) {

@@ -29,7 +29,10 @@ public class Producto {
 	
 	@ManyToOne
 	private Proveedor proveedor;
-	
+
+	protected Producto() {
+		super();
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -94,10 +97,7 @@ public class Producto {
 
 	
 
-	protected Producto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 	public String getNombre() {
 		return nombre;
 	}

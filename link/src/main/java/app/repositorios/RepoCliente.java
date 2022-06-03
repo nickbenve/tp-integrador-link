@@ -10,6 +10,7 @@ import app.dominio.Cliente;
 
 @RepositoryRestResource(path="clientes")
 public interface RepoCliente extends PagingAndSortingRepository<Cliente, Integer>{
+	
 	@Override	
 	@RestResource(exported = false)
 	void deleteById(Integer id) ;

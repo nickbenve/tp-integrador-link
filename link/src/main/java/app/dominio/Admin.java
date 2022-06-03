@@ -18,11 +18,11 @@ public class Admin extends Rol{
 	public Admin(String nombre,String mail) {
 		this.nombre=nombre;
 		this.mail=mail;
-		this.fechaIngreso=LocalDate.now();
 	}
 	
 	protected Admin() {
 		super();
+		this.fechaIngreso=LocalDate.now();
 		// TODO Auto-generated constructor stub
 	}
 

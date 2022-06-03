@@ -58,6 +58,8 @@ public class Orden {
 	
 	protected Orden() {
 		super();
+		this.fecha_creacion= LocalDate.now();
+		this.confirmada=false;
 		// TODO Auto-generated constructor stub
 	}
 

@@ -13,9 +13,6 @@ import app.dominio.Promocion;
 @Entity
 public class DescuentoMembrecia  extends Promocion{
 	
-
-	
-	
 	@OneToOne
 	private Membrecia membrecia;
 	

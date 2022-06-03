@@ -17,8 +17,7 @@ import app.dominio.Precio;
 @Entity
 public class CalculadorPrecioDolar extends Precio{
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+
 	private double precio;
 	
 	@ManyToOne
