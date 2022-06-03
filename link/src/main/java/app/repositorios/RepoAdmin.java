@@ -5,7 +5,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import app.dominio.Admin;
 
-@RepositoryRestResource(path="admin")
+@RepositoryRestResource(path="administradores")
 public interface RepoAdmin extends PagingAndSortingRepository<Admin, Integer> {
 
+	
 }
