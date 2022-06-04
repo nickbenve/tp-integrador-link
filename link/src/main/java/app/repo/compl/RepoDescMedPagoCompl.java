@@ -1,7 +1,10 @@
 package app.repo.compl;
 
+import java.util.Map;
 import java.util.Optional;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,25 +28,28 @@ public class RepoDescMedPagoCompl {
 	
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST,value="/promocionesMediosDePago")
-	public @ResponseBody String crearPromo(
-			@RequestBody String descripcion//,@RequestBody Double porcentaje,@RequestBody String medio) 
-		) {
-//		
-//		  PromocionMedioPago promocion= new PromocionMedioPago();
-//		  promocion.setDescripcion(descripcion);
-//		  promocion.setPorcentaje(porcentaje);
-//		
-//		  for(MedioPago medioi : MedioPago.values())
-//	      {     
-//			  if(medioi.name().equals(medio)) {
-//				 promocion.setMetodoPago(medioi); 
-//				 repoPromMedio.save(promocion);
-//				 return "se creo la promocion";
-//			  }
-//	      }
-		  return "hubo un error";
-		  		
-	}
+	public @ResponseBody String crearPromo(@RequestBody Map<String, Object> body){
+		
+		String descrip=body.get("descripcion").toString();
+		String stringPorcentaje=body.get("porcentaje").toString();
+		Double valorPorcentaje=Double.parseDouble(stringPorcentaje);
+		String medio=body.get("medioPago").toString();
+		
+
+		PromocionMedioPago promocion= new PromocionMedioPago();
+		promocion.setDescripcion(descrip);
+		promocion.setPorcentaje(valorPorcentaje);
+		
+		for(MedioPago medioi : MedioPago.values())
+	      {     
+			  if(medioi.name().equals(medio)) {
+				 promocion.setMetodoPago(medioi); 
+				 repoPromMedio.save(promocion);
+				 return "se creo la promocion";
+			  }
+	      }
+		  return "hubo un error";	  		
+		}
 }
 
 
