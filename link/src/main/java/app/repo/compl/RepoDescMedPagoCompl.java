@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,21 +26,21 @@ public class RepoDescMedPagoCompl {
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST,value="/promocionesMediosDePago")
 	public @ResponseBody String crearPromo(
-			@RequestBody String descripcion,@RequestBody Double porcentaje,@RequestBody String medio) {
-		
-		
-		  PromocionMedioPago promocion= new PromocionMedioPago();
-		  promocion.setDescripcion(descripcion);
-		  promocion.setPorcentaje(porcentaje);
-		
-		  for(MedioPago medioi : MedioPago.values())
-	      {     
-			  if(medioi.name().equals(medio)) {
-				 promocion.setMetodoPago(medioi); 
-				 repoPromMedio.save(promocion);
-				 return "se creo la promocion";
-			  }
-	      }
+			@RequestBody String descripcion//,@RequestBody Double porcentaje,@RequestBody String medio) 
+		) {
+//		
+//		  PromocionMedioPago promocion= new PromocionMedioPago();
+//		  promocion.setDescripcion(descripcion);
+//		  promocion.setPorcentaje(porcentaje);
+//		
+//		  for(MedioPago medioi : MedioPago.values())
+//	      {     
+//			  if(medioi.name().equals(medio)) {
+//				 promocion.setMetodoPago(medioi); 
+//				 repoPromMedio.save(promocion);
+//				 return "se creo la promocion";
+//			  }
+//	      }
 		  return "hubo un error";
 		  		
 	}

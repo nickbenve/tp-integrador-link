@@ -5,9 +5,6 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import app.dominio.MedioPago;
 import app.dominio.Orden;
@@ -53,10 +50,6 @@ public class PromocionMedioPago  extends Promocion{
 		
 	}
 	
-	public void setPorcentaje(double porcentaje) {
-		this.porcentaje = porcentaje;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(descripcion, metodoPago);
