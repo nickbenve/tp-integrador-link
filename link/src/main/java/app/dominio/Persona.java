@@ -1,5 +1,6 @@
 package app.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,6 +44,7 @@ public class Persona {
 		super();
 		this.usuario = usuario;
 		this.contrasenia = contrasenia;
+		this.roles=new ArrayList<Rol>();
 		this.roles=roles;
 	}
 	public List<Rol> getRoles() {
@@ -53,6 +55,7 @@ public class Persona {
 	}
 	protected Persona() {
 		super();
+		this.roles=new ArrayList<Rol>();
 		// TODO Auto-generated constructor stub
 	}
 	public Integer getId() {

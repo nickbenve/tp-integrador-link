@@ -1,6 +1,7 @@
 package app.dominio;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -53,6 +54,8 @@ public class Orden {
 		this.cliente=cliente;
 		this.fecha_creacion= LocalDate.now();
 		this.confirmada=false;
+		this.items=new ArrayList<Item_Orden>();
+		this.promociones=new ArrayList<Promocion>();
 	}
 
 	
@@ -60,6 +63,8 @@ public class Orden {
 		super();
 		this.fecha_creacion= LocalDate.now();
 		this.confirmada=false;
+		this.items=new ArrayList<Item_Orden>();
+		this.promociones=new ArrayList<Promocion>();
 		// TODO Auto-generated constructor stub
 	}
 

@@ -12,8 +12,6 @@ public class CalculadorPrecioArgentino extends Precio{
 
 
 	private double precio;
-	
-	
 	public CalculadorPrecioArgentino(double precio) {
 		this.precio = precio;
 	}
@@ -25,4 +23,14 @@ public class CalculadorPrecioArgentino extends Precio{
 	public Double calcularPrecio() {
 		return precio;
 	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+	
+	
 }

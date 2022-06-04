@@ -23,14 +23,13 @@ public class PromocionMedioPago  extends Promocion{
 	private MedioPago metodoPago;
 	
 	private double porcentaje;
-	private Boolean utilizado;
+
 	
 	public PromocionMedioPago(String descripcion, MedioPago metodoPago, double descuento) {
 		super();
 		this.descripcion = descripcion;
 		this.metodoPago = metodoPago;
 		this.porcentaje = descuento;
-		this.utilizado=false;
 	}
 	
 	@Override
@@ -44,16 +43,20 @@ public class PromocionMedioPago  extends Promocion{
 	
 	
 	
-	protected PromocionMedioPago() {
+	public PromocionMedioPago() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public void utilizar() {
-		this.utilizado=true;
+		
 		
 	}
 	
+	public void setPorcentaje(double porcentaje) {
+		this.porcentaje = porcentaje;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(descripcion, metodoPago);
@@ -85,15 +88,10 @@ public class PromocionMedioPago  extends Promocion{
 	public double getPorcentaje() {
 		return porcentaje;
 	}
-	public void setPorcentaje(Float porcentaje) {
+	public void setPorcentaje(Double porcentaje) {
 		this.porcentaje = porcentaje;
 	}
-	public Boolean getUtilizado() {
-		return utilizado;
-	}
-	public void setUtilizado(Boolean utilizado) {
-		this.utilizado = utilizado;
-	}
+
 	
 	
 	

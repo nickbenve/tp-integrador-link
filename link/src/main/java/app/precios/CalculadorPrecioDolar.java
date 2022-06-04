@@ -40,4 +40,16 @@ public class CalculadorPrecioDolar extends Precio{
 	
 		
 	}
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+	public CotizacionDolar getCotizador() {
+		return cotizador;
+	}
+	public void setCotizador(CotizacionDolar cotizador) {
+		this.cotizador = cotizador;
+	}
 }

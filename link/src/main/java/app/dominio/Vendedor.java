@@ -30,7 +30,10 @@ public class Vendedor extends Rol{
 
 	protected Vendedor() {
 		super();
-		// TODO Auto-generated constructor stub
+		
+		proveedores=new ArrayList<Proveedor>();
+		productos=new ArrayList<Producto>();
+
 	}
 
 	public Vendedor(String nombre, Integer legajo) {

@@ -1,6 +1,7 @@
 package app.dominio;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,6 +25,7 @@ public class Membrecia  {
 		
 	public Membrecia() {
 		super();
+		miembros=new ArrayList<Cliente>();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -34,6 +36,7 @@ public class Membrecia  {
 	public Membrecia(String nombre) {
 		super();
 		this.nombre = nombre;
+		miembros=new ArrayList<Cliente>();
 	}
 	
 	public void agregarMiembro(Cliente miembro) {

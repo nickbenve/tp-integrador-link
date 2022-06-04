@@ -1,6 +1,7 @@
 package app.dominio;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,6 +36,7 @@ public class Cliente extends Rol{
 
 	protected Cliente() {
 		super();
+		this.compras=new ArrayList<Orden>();
 		// TODO Auto-generated constructor stub
 	}
 
