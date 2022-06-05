@@ -16,9 +16,7 @@ import app.dominio.descuentos.CuponProveedor;
 import app.dominio.descuentos.DescuentoMembrecia;
 import app.dominio.descuentos.PromocionMedioPago;
 import app.excepciones.FaltaStockException;
-import app.precios.CalculadorPrecioArgentino;
-import app.precios.CalculadorPrecioDolar;
-
+import app.precios.CotizacionDolar;
 
 
 public class OrdenTest {
@@ -34,8 +32,11 @@ public class OrdenTest {
  */
 	@Test
 	public void faltaStock() throws Exception{
-			Producto producto=new Producto("Arroz","nick",new CalculadorPrecioArgentino(5.0),4,new Proveedor("hola","hola"));
-		    assertThrows(FaltaStockException.class,
+
+			Double precio=3.0;
+			Producto producto=new Producto("a","b",precio,5, new Proveedor("a","b"),true);
+		    
+			assertThrows(FaltaStockException.class,
 		    		()->{
 		    			Item_Orden item1=new Item_Orden(2,producto);
 		    			Item_Orden item2=new Item_Orden(5,producto);
@@ -46,8 +47,8 @@ public class OrdenTest {
 	@Test
 	public void calculoCostoOrdenSinDesc()throws Exception{
 		Proveedor proveedor=new Proveedor("nick", "11111");
-		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioArgentino(50),20,proveedor);
-		Producto producto2=new Producto("Leche","1 litro",new CalculadorPrecioArgentino(100),25,new Proveedor("Serenicima","1111111"));
+		Producto producto=new Producto("Arroz","1kg",50.0,100, proveedor,true);
+		Producto producto2=new Producto("Leche","1 litro",100.0,25,new Proveedor("Serenicima","1111111"),true);
 		
 		Orden orden= new Orden(new Cliente("nick","1"));
 		Item_Orden i1= new Item_Orden(2, producto);
@@ -64,7 +65,7 @@ public class OrdenTest {
 	@Test
 	public void calculoCostoOrdenSinDescDolar()throws Exception{
 		Proveedor proveedor=new Proveedor("nick", "11111");
-		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioDolar(1.0),20,proveedor);
+		Producto producto=new Producto("Arroz","1kg",1.0,20,proveedor,true);
 	
 		
 		Orden orden= new Orden(new Cliente("nick","1"));
@@ -80,7 +81,7 @@ public class OrdenTest {
 	public void calculoCostoOrdenConDesc() throws Exception{
 		
 		Proveedor proveedor=new Proveedor("nick", "11111");
-		Producto producto=new Producto("Arroz","1kg",new CalculadorPrecioArgentino(50),20,proveedor);
+		Producto producto=new Producto("Arroz","1kg",50.0,20,proveedor,true);
 	
 		Cliente nick= new Cliente("nick","1");
 		Orden orden= new Orden(nick);

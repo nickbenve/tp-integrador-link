@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import app.precios.CotizacionDolar;
 
-@RepositoryRestResource(path="cotizacionesDolares")
+@RepositoryRestResource(path="cotizacionDolar")
 public interface RepoCotizacionDolar extends PagingAndSortingRepository<CotizacionDolar, Integer>{
 
 }

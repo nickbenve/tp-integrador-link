@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @Entity 
-public class CotizacionDolar {
+public class CotizacionDolar{
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
@@ -28,9 +28,14 @@ public class CotizacionDolar {
       
     	this.ultimaActualizacion = LocalDateTime.of(hoy,ahora);
 		this.valor = this.inicializar();
-
+		
 	}
 
+	public Double calcularPrecio(Double valor) {
+		return 	this.calcularPrecio()*valor;		
+	}
+	
+	
 	public Double inicializar() {
 		RestTemplate nuevo= new RestTemplate();
 		try {

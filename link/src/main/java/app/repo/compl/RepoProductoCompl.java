@@ -16,10 +16,11 @@ import app.dominio.MedioPago;
 import app.dominio.Producto;
 import app.dominio.Proveedor;
 import app.dominio.descuentos.PromocionMedioPago;
-import app.precios.CalculadorPrecioArgentino;
-import app.precios.CalculadorPrecioDolar;
-import app.repositorios.RepoCalculadorPrecioArgentino;
-import app.repositorios.RepoCalculadorPrecioDolar;
+import app.precios.CotizacionDolar;
+import app.precios.CotizacionPesos;
+
+import app.repositorios.RepoCotizacionDolar;
+import app.repositorios.RepoCotizacionPesos;
 import app.repositorios.RepoProducto;
 import app.repositorios.RepoProveedor;
 
@@ -31,61 +32,25 @@ public class RepoProductoCompl {
 	RepoProducto repoProductos;
 	
 	@Autowired
-	RepoCalculadorPrecioArgentino repoPesos;
-	
-	@Autowired
-	RepoCalculadorPrecioDolar repoDolar;
-	
+	RepoCotizacionDolar repoDolar;
+		
 	@Autowired
 	RepoProveedor repoProv;
 	
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST,value="/productos")
-	public @ResponseBody String crearProducto(@RequestBody Map<String, Object> body){
+	public @ResponseBody String crearProducto(@RequestBody Producto producto){
 		
-		
-		String nombre=body.get("nombre").toString();
-		String descripcion=body.get("descripcion").toString();
-		String precioString=body.get("precio").toString();
-		String stockString=body.get("stock").toString();
-		
-		String idProveedor= body.get("proveedor").toString();
-		Integer proveedor=Integer.parseInt(idProveedor);
-		Optional<Proveedor> prov=repoProv.findById(proveedor);
-		
-		
-		Producto producto= new Producto();
-		Integer stock=Integer.parseInt(stockString);
-		Double precioNum=Double.parseDouble(precioString);
-		String moneda=body.get("moneda").toString();
-		
-		producto.setNombre(nombre);
+		if(producto.getEsPesos()) {
+			repoProductos.save(producto);
 
-		producto.setDescripcion(descripcion);
-		producto.setStock(stock);
-	
-		if(moneda.equals("$")) {
-			CalculadorPrecioArgentino precio=new CalculadorPrecioArgentino(precioNum);
-			producto.setPrecio(precio);	
-			if(!prov.isEmpty()) {
-				producto.setProveedor(prov);
-				repoPesos.save(precio);
-				repoProductos.save(producto);
-				
-				return "se guardo el producto";
-			}
 		}else {
-			if(moneda.equals("USD")) {
-				CalculadorPrecioDolar precio=new CalculadorPrecioDolar(precioNum);
-				
-				producto.setPrecio(precio);	
-				producto.setProveedor(prov);
-				repoDolar.save(precio);
+			
 				repoProductos.save(producto);
 				return "se guardo el producto";	
 				
 				
-			}
+			
 		}
 
 		return "hubo un error";

@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import app.excepciones.FaltaStockException;
+import app.precios.CotizacionDolar;
+
 
 
 @Entity
@@ -21,10 +23,24 @@ public class Producto {
 	private String nombre;
 	private String descripcion;
 	private Integer cantidadMinima;
+	private Boolean esPesos;
 	
-	@OneToOne
-	private Precio Precio;
-	
+	private Double precio;
+	private CotizacionDolar cotizador;
+	public CotizacionDolar getCotizador() {
+		return cotizador;
+	}
+	public void setCotizador(CotizacionDolar optional) {
+		this.cotizador = optional;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+
+
 	private Boolean activo;
 	private Integer stock;
 	
@@ -69,12 +85,13 @@ public class Producto {
 		this. cantidadMinima = cantidad;
 	}
 
+	
 	public Double getPrecio() {
-		return Precio.calcularPrecio();
-	}
-
-	public void setPrecio(Precio precio) {
-		Precio = precio;
+		if(esPesos) {
+			return this.precio;
+		}else {
+			return cotizador.calcularPrecio(this.precio);
+		}
 	}
 
 	public Boolean getActivo() {
@@ -127,13 +144,20 @@ public class Producto {
 	}
 
 
-	public Producto(String nombre, String descripcion, app.dominio.Precio precio, Integer stock,
-			Proveedor proveedor) {
+	public Boolean getEsPesos() {
+		return esPesos;
+	}
+	public void setEsPesos(Boolean esPesos) {
+		this.esPesos = esPesos;
+	}
+	public Producto(String nombre, String descripcion,Double precio, Integer stock,
+			Proveedor proveedor,Boolean esPesos) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.cantidadMinima = 0;
-		Precio = precio;
+		this.cantidadMinima = 0;	
+		this.precio=precio;
+		this.esPesos=esPesos;
 		this.stock = stock;
 		this.proveedor = proveedor;
 		if(this.stock>0) {

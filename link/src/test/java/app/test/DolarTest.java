@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //import org.junit.jupiter.api.Test;
 
-import app.precios.CalculadorPrecioDolar;
+
+import app.precios.CotizacionDolar;
 
 public class DolarTest {
 //	@Test
 	public void precioDolar() {
-		CalculadorPrecioDolar dolarActual= new CalculadorPrecioDolar(2.0);
-		double costoFinal=dolarActual.calcularPrecio();
+		CotizacionDolar dolarActual= new CotizacionDolar();
+		double costoFinal=dolarActual.calcularPrecio(1.0);
 		assertEquals(costoFinal,231.94);
 	}
 }
