@@ -16,6 +16,8 @@ public class Item_Orden {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
+
+	
 	private double cantidad;
 	private Double precio;
 	

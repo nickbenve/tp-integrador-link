@@ -1,6 +1,7 @@
 package app.dominio;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Producto {
 	@ManyToOne
 	private Proveedor proveedor;
 
-	protected Producto() {
+	public Producto() {
 		super();
 	}
 	public Integer getId() {
@@ -165,6 +166,10 @@ public class Producto {
 
 	public void agregarStock(Integer cantidad) {
 		this.stock=this.getStock() + cantidad;
+		
+	}
+	public void setProveedor(Optional<Proveedor> prov) {
+		// TODO Auto-generated method stub
 		
 	}
 	
