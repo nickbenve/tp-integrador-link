@@ -1,8 +1,6 @@
 package app.precios;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,45 +8,50 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 
-@Entity 
+@Component
+@Entity
 public class CotizacionDolar{
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	public Double valor;
-	public LocalDateTime ultimaActualizacion;
+	
+	private static CotizacionDolar cotizadorDolar;
 	
 	
 	public CotizacionDolar() {
-		LocalDate hoy = LocalDate.now();
-        LocalTime ahora = LocalTime.now();
-      
-    	this.ultimaActualizacion = LocalDateTime.of(hoy,ahora);
-		this.valor = this.inicializar();
-		
+		this.actualizar();
+	}
+	
+	
+	public static CotizacionDolar getCotizadorDolar() {
+
+		if (cotizadorDolar==null) {
+
+			cotizadorDolar = new CotizacionDolar();
+		}
+			return cotizadorDolar;
 	}
 
 	public Double calcularPrecio(Double valor) {
 		return 	this.calcularPrecio()*valor;		
 	}
 	
-	
-	public Double inicializar() {
+	@Scheduled(fixedRate = 1000*60*30)
+	public void actualizar() {
 		RestTemplate nuevo= new RestTemplate();
 		try {
-			LocalDate hoy = LocalDate.now();
-	        LocalTime ahora = LocalTime.now();
-	    	this.ultimaActualizacion = LocalDateTime.of(hoy,ahora);
-			double valor=this.run(nuevo).getCompra();
-			return valor;
+			this.valor=this.run(nuevo).getCompra();
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return 0.0;
+
 		
 	}
 	public Double getValor() {
@@ -56,19 +59,12 @@ public class CotizacionDolar{
 	}
 
 
+
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 
 
-	public LocalDateTime getUltimaActualizacion() {
-		return ultimaActualizacion;
-	}
-
-
-	public void setUltimaActualizacion(LocalDateTime ultimaActualizacion) {
-		this.ultimaActualizacion = ultimaActualizacion;
-	}
 
 
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
@@ -82,22 +78,8 @@ public class CotizacionDolar{
 	}
 	
 	public Double calcularPrecio() {
-		LocalDateTime horaActual=LocalDateTime.now();
-		if(ultimaActualizacion.isAfter(horaActual.minusMinutes(30))) {
-			return valor;
-		}else {
-		RestTemplate nuevo= new RestTemplate();
-		try {
-			LocalDate hoy = LocalDate.now();
-	        LocalTime ahora = LocalTime.now();
-	    	this.ultimaActualizacion = LocalDateTime.of(hoy,ahora);
-			double valor=this.run(nuevo).getCompra();
-			return valor;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0.0;
-		}
+		return valor;
+		
 	}
+
 }

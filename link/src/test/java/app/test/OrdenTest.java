@@ -16,20 +16,11 @@ import app.dominio.descuentos.CuponProveedor;
 import app.dominio.descuentos.DescuentoMembrecia;
 import app.dominio.descuentos.PromocionMedioPago;
 import app.excepciones.FaltaStockException;
-import app.precios.CotizacionDolar;
 
 
 public class OrdenTest {
-/*
- * crear test crear orden y calcular costo
- * crear orden con descuentos y ver que funcionen todos los tipos de descuentos
- * 
- * 
- * 
- * 
- * 
- * 
- */
+
+ 
 	@Test
 	public void faltaStock() throws Exception{
 
@@ -45,7 +36,7 @@ public class OrdenTest {
 	}
 	
 	@Test
-	public void calculoCostoOrdenSinDesc()throws Exception{
+	public void calculoCostoOrdenSinDesc() throws Exception{
 		Proveedor proveedor=new Proveedor("nick", "11111");
 		Producto producto=new Producto("Arroz","1kg",50.0,100, proveedor,true);
 		Producto producto2=new Producto("Leche","1 litro",100.0,25,new Proveedor("Serenicima","1111111"),true);
@@ -63,7 +54,7 @@ public class OrdenTest {
 	
 	
 	@Test
-	public void calculoCostoOrdenSinDescDolar()throws Exception{
+	public void calculoCostoOrdenSinDescDolar() throws Exception{
 		Proveedor proveedor=new Proveedor("nick", "11111");
 		Producto producto=new Producto("Arroz","1kg",1.0,20,proveedor,true);
 	

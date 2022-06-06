@@ -1,5 +1,6 @@
 package app.dominio;
 
+
 import java.util.Objects;
 import java.util.Optional;
 
@@ -8,7 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
+import javax.persistence.Transient;
 
 import app.excepciones.FaltaStockException;
 import app.precios.CotizacionDolar;
@@ -22,11 +24,13 @@ public class Producto {
 	
 	private String nombre;
 	private String descripcion;
-	private Integer cantidadMinima;
 	private Boolean esPesos;
 	
 	private Double precio;
+	
+	@ManyToOne
 	private CotizacionDolar cotizador;
+	
 	public CotizacionDolar getCotizador() {
 		return cotizador;
 	}
@@ -61,17 +65,8 @@ public class Producto {
 		}
 	
 	}
-	public Integer getCantidad() {
-		return  cantidadMinima;
-	}
 
-	public Integer getCantidadMinima() {
-		return cantidadMinima;
-	}
 
-	public void setCantidadMinima(Integer cantidadMinima) {
-		this.cantidadMinima = cantidadMinima;
-	}
 
 	public Proveedor getProveedor() {
 		return proveedor;
@@ -81,9 +76,6 @@ public class Producto {
 		this.proveedor = proveedor;
 	}
 
-	public void setCantidad(Integer cantidad) {
-		this. cantidadMinima = cantidad;
-	}
 
 	
 	public Double getPrecio() {
@@ -135,13 +127,6 @@ public class Producto {
 
 
 
-	public Integer getCantMinSolicitud() {
-		return  cantidadMinima;
-	}
-
-	public void setCantMinSolicitud(Integer cantMinSolicitud) {
-		this.cantidadMinima = cantMinSolicitud;
-	}
 
 
 	public Boolean getEsPesos() {
@@ -154,8 +139,7 @@ public class Producto {
 			Proveedor proveedor,Boolean esPesos) {
 		super();
 		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.cantidadMinima = 0;	
+		this.descripcion = descripcion;	
 		this.precio=precio;
 		this.esPesos=esPesos;
 		this.stock = stock;
@@ -167,35 +151,19 @@ public class Producto {
 		}
 	}
 
-	public String getNomYProv() {
-		return nombre+proveedor.getNombre();
-	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(nombre, proveedor);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Producto other = (Producto) obj;
-		return Objects.equals(nombre, other.nombre) && Objects.equals(proveedor, other.proveedor);
-	}
+
 
 	public void agregarStock(Integer cantidad) {
 		this.stock=this.getStock() + cantidad;
 		
 	}
-	public void setProveedor(Optional<Proveedor> prov) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	
 	

@@ -2,6 +2,11 @@ package app.excepciones;
 
 public class CuilRepetidoExepction extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public CuilRepetidoExepction() {
 		super();
 		// TODO Auto-generated constructor stub
