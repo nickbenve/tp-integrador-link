@@ -6,11 +6,11 @@ package app.precios;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.scheduling.annotation.Scheduled;
-
+import org.springframework.stereotype.Component;
 
 import org.springframework.web.client.RestTemplate;
 
-
+@Component
 public class CotizacionDolar {
 
 	private static CotizacionDolar cotizacionDolar;
