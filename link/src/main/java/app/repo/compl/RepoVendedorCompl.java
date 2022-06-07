@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import app.dominio.Producto;
 import app.dominio.Proveedor;
 import app.dominio.Vendedor;
-import app.precios.CotizacionDolar;
-import app.repositorios.RepoCotizacionDolar;
+
 import app.repositorios.RepoProducto;
 import app.repositorios.RepoProveedor;
 import app.repositorios.RepoVendedor;
@@ -31,9 +30,6 @@ public class RepoVendedorCompl {
 	@Autowired
 	RepoVendedor repoVen;
 	
-	@Autowired
-	RepoCotizacionDolar repoDolar;
-	
 
 	
 	@Transactional
@@ -41,9 +37,6 @@ public class RepoVendedorCompl {
 	public @ResponseBody String crearProducto(@PathVariable("vendedorId") Integer vendedorId,@RequestBody ProductoINPUT productoIN){
 		
 
-		Optional<CotizacionDolar> cotizacion=repoDolar.findById(1);
-		
-		CotizacionDolar dolar= new CotizacionDolar();
 		
 		Producto producto= new Producto();
 		this.machear(producto,productoIN);
@@ -72,7 +65,6 @@ public class RepoVendedorCompl {
 			return "se guardo el producto";
 
 		}else {
-				producto.setCotizador(dolar);
 				repoProductos.save(producto);
 				return "se guardo el producto";				
 		}

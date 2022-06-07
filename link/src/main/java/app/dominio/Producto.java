@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.Transient;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import app.excepciones.FaltaStockException;
 import app.precios.CotizacionDolar;
 
@@ -28,15 +30,8 @@ public class Producto {
 	
 	private Double precio;
 	
-	@ManyToOne
-	private CotizacionDolar cotizador;
-	
-	public CotizacionDolar getCotizador() {
-		return cotizador;
-	}
-	public void setCotizador(CotizacionDolar optional) {
-		this.cotizador = optional;
-	}
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -51,6 +46,9 @@ public class Producto {
 	@ManyToOne
 	private Proveedor proveedor;
 
+	@Transient
+	private CotizacionDolar cd;
+	
 	public Producto() {
 		super();
 	}
@@ -76,13 +74,14 @@ public class Producto {
 		this.proveedor = proveedor;
 	}
 
-
 	
 	public Double getPrecio() {
 		if(esPesos) {
 			return this.precio;
 		}else {
-			return cotizador.calcularPrecio(this.precio);
+			CotizacionDolar coti=cd.getCotizacionDolar();
+			Double valor=coti.calcularPrecio();
+			return coti.calcularPrecio(this.precio);
 		}
 	}
 
