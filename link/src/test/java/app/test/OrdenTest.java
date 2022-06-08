@@ -64,7 +64,7 @@ public class OrdenTest {
 		
 		orden.agregarItem(i1);
 			
-		assertEquals(400,orden.costoTotal());
+		assertEquals(1.0,orden.costoTotal());
 		
 	}
 	

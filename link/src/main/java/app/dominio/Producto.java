@@ -45,9 +45,9 @@ public class Producto {
 	
 	@ManyToOne
 	private Proveedor proveedor;
-
-	@Transient
-	private CotizacionDolar cd;
+//
+//	@Transient
+//	private CotizacionDolar cd;
 	
 	public Producto() {
 		super();
@@ -79,7 +79,7 @@ public class Producto {
 		if(esPesos) {
 			return this.precio;
 		}else {
-			CotizacionDolar coti=cd.getCotizacionDolar();
+			CotizacionDolar coti=CotizacionDolar.getCotizacionDolar();
 			Double valor=coti.calcularPrecio();
 			return coti.calcularPrecio(this.precio);
 		}
