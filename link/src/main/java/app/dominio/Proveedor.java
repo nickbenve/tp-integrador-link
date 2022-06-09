@@ -41,7 +41,7 @@ public class Proveedor {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(cuit);
+		return Objects.hash(id);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -52,7 +52,7 @@ public class Proveedor {
 		if (getClass() != obj.getClass())
 			return false;
 		Proveedor other = (Proveedor) obj;
-		return Objects.equals(cuit, other.cuit);
+		return Objects.equals(id, other.id);
 	}
 	public String getNombre() {
 		return nombre;

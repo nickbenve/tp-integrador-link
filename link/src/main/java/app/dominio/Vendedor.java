@@ -77,6 +77,19 @@ public class Vendedor extends Rol{
 		this.id = id;
 	}
 
-	
+	public void agregarProveedor(Proveedor proveedor) {
+		proveedores.add(proveedor);
+	}
+	public void sacarProveedor(Proveedor proveedor)
+	{
+		proveedores.remove(proveedor);
+	}
 
+	public void agregarProducto(Producto producto) {
+		productos.add(producto);
+	}
+	
+	public void sacarProducto(Producto producto) {
+		productos.remove(producto);
+	}
 }
