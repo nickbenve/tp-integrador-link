@@ -10,3 +10,4 @@ public interface RepoVendedor extends PagingAndSortingRepository<Vendedor, Integ
 
 
 
+}
