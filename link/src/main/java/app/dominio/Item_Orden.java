@@ -17,7 +17,7 @@ public class Item_Orden {
 	private Integer id;
 	
 
-	
+
 	private double cantidad;
 	private Double precio;
 	

@@ -15,7 +15,7 @@ public abstract class Promocion {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	public abstract Double descuento(Orden orden);
+	public abstract Double descuento(Carrito carrito);
 	public abstract void utilizar();
 
 }

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import app.dominio.Carrito;
 import app.dominio.Cliente;
 import app.dominio.Item_Orden;
 import app.dominio.MedioPago;
@@ -41,14 +42,15 @@ public class OrdenTest {
 		Producto producto=new Producto("Arroz","1kg",50.0,100, proveedor,true);
 		Producto producto2=new Producto("Leche","1 litro",100.0,25,new Proveedor("Serenicima","1111111"),true);
 		
-		Orden orden= new Orden(new Cliente("nick","1"));
+		
+		Carrito carrito= new Carrito(new Cliente("nick","1"));
 		Item_Orden i1= new Item_Orden(2, producto);
 		Item_Orden i2= new Item_Orden(3,producto2);
 		
-		orden.agregarItem(i2);
-		orden.agregarItem(i1);
+		carrito.agregarItem(i2);
+		carrito.agregarItem(i1);
 			
-		assertEquals(400,orden.costoTotal());
+		assertEquals(400,carrito.costoTotal());
 		
 	}
 	
@@ -59,12 +61,12 @@ public class OrdenTest {
 		Producto producto=new Producto("Arroz","1kg",1.0,20,proveedor,true);
 	
 		
-		Orden orden= new Orden(new Cliente("nick","1"));
+		Carrito carrito= new Carrito(new Cliente("nick","1"));
 		Item_Orden i1= new Item_Orden(1, producto);
 		
-		orden.agregarItem(i1);
+		carrito.agregarItem(i1);
 			
-		assertEquals(1.0,orden.costoTotal());
+		assertEquals(1.0,carrito.costoTotal());
 		
 	}
 	
@@ -73,23 +75,24 @@ public class OrdenTest {
 		
 		Proveedor proveedor=new Proveedor("nick", "11111");
 		Producto producto=new Producto("Arroz","1kg",50.0,20,proveedor,true);
-	
+		
 		Cliente nick= new Cliente("nick","1");
-		Orden orden= new Orden(nick);
+		Carrito carrito= new Carrito(nick);
+
 		
 		Item_Orden i1= new Item_Orden(2, producto);
 			
-		orden.agregarItem(i1);
-		orden.setMedioPago(MedioPago.EFECTIVO);
+		carrito.agregarItem(i1);
+		carrito.setMedioPago(MedioPago.EFECTIVO);
 		CuponProveedor cupon=new CuponProveedor(10.0, proveedor);
 		PromocionMedioPago promoEfectivo= new PromocionMedioPago("10% en efectivo", MedioPago.EFECTIVO, 0.10);
 		
 		Membrecia membre=new Membrecia("banco frances");
 		membre.agregarMiembro(nick);
 		DescuentoMembrecia promo= new DescuentoMembrecia(membre,0.1);
-		orden.agregarPromo(promoEfectivo);
-		orden.agregarPromo(cupon);
-		orden.agregarPromo(promo);
-		assertEquals(70,orden.aplicarDescuentos());
+		carrito.agregarPromo(promoEfectivo);
+		carrito.agregarPromo(cupon);
+		carrito.agregarPromo(promo);
+		assertEquals(70,carrito.aplicarDescuentos());
 	}
 }

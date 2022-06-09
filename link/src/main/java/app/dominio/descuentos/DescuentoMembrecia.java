@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import app.dominio.Carrito;
 import app.dominio.Membrecia;
 import app.dominio.Orden;
 import app.dominio.Promocion;
@@ -18,9 +19,9 @@ public class DescuentoMembrecia  extends Promocion{
 	
 	private Double descuento;
 	
-	public Double descuento(Orden orden) {
-		if(membrecia.estaAsociado(orden.getCliente())) {
-			return this.getDescuento()*orden.costoTotal();
+	public Double descuento(Carrito carrito) {
+		if(membrecia.estaAsociado(carrito.getCliente())) {
+			return this.getDescuento()*carrito.costoTotal();
 		}else {
 			return 0.0;
 		}

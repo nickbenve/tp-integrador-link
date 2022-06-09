@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import app.DTO.ProductoINPUT;
+import app.DTO.StockINPUT;
 import app.dominio.Producto;
 import app.dominio.Proveedor;
 import app.dominio.Vendedor;
@@ -31,17 +33,38 @@ public class RepoVendedorCompl {
 	RepoVendedor repoVen;
 	
 
+//	ACTUALIZAR STOCK
+	
+	@Transactional
+	@RequestMapping(method = RequestMethod.POST,value="/vendedores/{vendedorId}/agregarStock")
+	public @ResponseBody String agregarStock(@PathVariable("vendedorId") Integer vendedorId,@RequestBody StockINPUT stockCarga) {
+		
+		Optional<Vendedor> opcionalVendedor=repoVen.findById(vendedorId);
+		if(opcionalVendedor.isEmpty()) {
+			return "vendedor no encontrado";
+		}
+		
+		
+		Optional<Producto> opcionalProducto=repoProductos.findById(stockCarga.getId_producto());
+		if(opcionalProducto.isEmpty()) {
+			return "no existe el producto";
+		}
+//		if(!opcionalVendedor.get().getProductos().contains(opcionalProducto.get())) {
+//			return "El vendedor no contiene al producto";
+//		}else {
+			opcionalProducto.get().agregarStock(stockCarga.getCantidad());
+			return "se actualizo el stock";
+//		}:TODO ACA tendria q ver solo sus productos?
+	}
+
 	
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST,value="/vendedores/{vendedorId}/crearProducto")
 	public @ResponseBody String crearProducto(@PathVariable("vendedorId") Integer vendedorId,@RequestBody ProductoINPUT productoIN){
 		
-
-		
 		Producto producto= new Producto();
-		this.machear(producto,productoIN);
-
-		
+		this.machearProductoNuevo(producto,productoIN);
+	
 		Optional<Proveedor> opcionalProveedor=repoProv.findById(productoIN.getId_proveedor());
 		if(opcionalProveedor.isEmpty()) {
 			return "no existe un proveedor con ese id";
@@ -59,20 +82,16 @@ public class RepoVendedorCompl {
 			return "proveedor no encontrado";
 		}
 		
-		
-		if(producto.getEsPesos()) {
-			repoProductos.save(producto);
-			return "se guardo el producto";
+		repoProductos.save(producto);
+		return "se creo correctamente el producto";
 
-		}else {
-				repoProductos.save(producto);
-				return "se guardo el producto";				
-		}
 	}
 
 
+	
+//	MACHEADORES
 
-	private void machear(Producto producto, ProductoINPUT productoIN) {
+	private void machearProductoNuevo(Producto producto, ProductoINPUT productoIN) {
 		producto.setDescripcion(productoIN.getDescripcion());
 		producto.setEsPesos(productoIN.getEsPesos());
 		producto.setNombre(productoIN.getNombre());

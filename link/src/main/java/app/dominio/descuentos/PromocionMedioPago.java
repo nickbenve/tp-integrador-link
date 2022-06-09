@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import app.dominio.Carrito;
 import app.dominio.MedioPago;
 import app.dominio.Orden;
 import app.dominio.Promocion;
@@ -30,9 +31,9 @@ public class PromocionMedioPago  extends Promocion{
 	}
 	
 	@Override
-	public Double descuento(Orden orden) {
-		if(orden.getMedioPago()==this.getMetodoPago()) {
-			return this.getPorcentaje()*orden.costoTotal();
+	public Double descuento(Carrito carrito) {
+		if(carrito.getMedioPago()==this.getMetodoPago()) {
+			return this.getPorcentaje()*carrito.costoTotal();
 		}else {
 			return 0.0;
 		}
@@ -85,7 +86,6 @@ public class PromocionMedioPago  extends Promocion{
 		this.porcentaje = porcentaje;
 	}
 
-	
 	
 	
 }

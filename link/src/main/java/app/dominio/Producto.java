@@ -32,6 +32,17 @@ public class Producto {
 	
 
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producto other = (Producto) obj;
+		return Objects.equals(id, other.id);
+	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -153,7 +164,7 @@ public class Producto {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(nombre, proveedor);
+		return Objects.hash(id);
 	}
 
 

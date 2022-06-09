@@ -1,4 +1,4 @@
-package app.repo.compl;
+package app.DTO;
 
 public class ProductoINPUT {
 	private String nombre;

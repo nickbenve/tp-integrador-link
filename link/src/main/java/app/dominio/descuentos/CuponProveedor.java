@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import app.dominio.Carrito;
 import app.dominio.Orden;
 import app.dominio.Promocion;
 import app.dominio.Proveedor;
@@ -41,16 +42,16 @@ public class CuponProveedor extends Promocion {
 	}
 	
 	@Override
-	public Double descuento(Orden orden) {
+	public Double descuento(Carrito carrito) {
 		if(this.getUtilizado()) {
 			return 0.0;
 		}else {
-			if(this.getValor()<=orden.costoEnProductosDe(proveedor)) {
+			if(this.getValor()<=carrito.costoEnProductosDe(proveedor)) {
 				this.utilizar();
 				return this.getValor();
 			}else {
 				this.utilizar();
-				return orden.costoEnProductosDe(proveedor);
+				return carrito.costoEnProductosDe(proveedor);
 			}
 		}
 	}

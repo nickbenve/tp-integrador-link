@@ -14,28 +14,22 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 @Entity
-public class Orden {
+public class Carrito {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	private LocalDate fecha_creacion;
-	
 	@OneToMany
 	private List<Item_Orden> items;
-
+	
 	@Enumerated(EnumType.STRING)
 	private MedioPago medioPago;
 	
 	@ManyToMany
 	private List<Promocion> promociones;
 	
-	private Boolean confirmada;
-	
 	@ManyToOne
 	private Cliente cliente;
-	
 
 	public Cliente getCliente() {
 		return cliente;
@@ -49,25 +43,18 @@ public class Orden {
 		this.cliente = cliente;
 	}
 
-	
-	
-	public Orden(Cliente cliente) {
+	public Carrito(Cliente cliente) {
 		super();
 		this.cliente=cliente;
-		this.fecha_creacion= LocalDate.now();
-		this.confirmada=false;
 		this.items=new ArrayList<Item_Orden>();
 		this.promociones=new ArrayList<Promocion>();
 	}
 
 	
-	protected Orden() {
+	protected Carrito() {
 		super();
-		this.fecha_creacion= LocalDate.now();
-		this.confirmada=false;
 		this.items=new ArrayList<Item_Orden>();
 		this.promociones=new ArrayList<Promocion>();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Double costoTotal() {
@@ -79,6 +66,10 @@ public class Orden {
 		items.add(itemNuevo);
 	}
 	
+	public Double aplicarDescuentos() {
+		return this.costoTotal()- promociones.stream().mapToDouble(x->x.descuento(this)).sum();
+		
+	}
 	
 	public Double costoEnProductosDe(Proveedor proveedor) {
 		
@@ -92,14 +83,6 @@ public class Orden {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public LocalDate getFecha_creacion() {
-		return fecha_creacion;
-	}
-
-	public void setFecha_creacion(LocalDate fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
 	}
 
 	public List<Item_Orden> getItems() {
@@ -125,7 +108,5 @@ public class Orden {
 	public void setPromociones(List<Promocion> promociones) {
 		this.promociones = promociones;
 	}
-	
-	
 	
 }
