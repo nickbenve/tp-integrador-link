@@ -3,7 +3,9 @@ package app.dominio;
 
 
 import java.util.Objects;
+import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,15 +14,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
 public class Persona {
 	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
+	@Id
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	@Column(name = "id", updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
+	private UUID id;
+
 	private String usuario;
 	
 
@@ -52,10 +59,11 @@ public class Persona {
 	protected Persona() {
 		super();	
 	}
-	public Integer getId() {
+
+	public UUID getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	@Override

@@ -1,6 +1,7 @@
 package app.repositorios;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +13,7 @@ import app.dominio.Persona;
 
 
 @RepositoryRestResource(path="personas")
-public interface RepoPersona extends PagingAndSortingRepository<Persona, Integer> {
+public interface RepoPersona extends PagingAndSortingRepository<Persona, UUID> {
 
 	
 }
