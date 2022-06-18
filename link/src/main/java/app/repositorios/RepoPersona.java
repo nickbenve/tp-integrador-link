@@ -13,14 +13,6 @@ import app.dominio.Persona;
 
 @RepositoryRestResource(path="personas")
 public interface RepoPersona extends PagingAndSortingRepository<Persona, Integer> {
-	@Override	
-	@RestResource(exported = false)
-	void deleteById(Integer id) ;
-	
-	@Override
-	@RestResource(exported = false)
-	void delete(Persona entity) ;
 
-	Optional<Persona> findByUsuario(String usuario);
 	
 }

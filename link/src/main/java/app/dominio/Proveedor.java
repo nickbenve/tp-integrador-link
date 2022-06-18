@@ -20,6 +20,13 @@ public class Proveedor {
 	private String cuit;
 	
 
+	public Proveedor(String nombre, String mail, String direccion, String cuit) {
+		super();
+		this.nombre = nombre;
+		this.mail = mail;
+		this.direccion = direccion;
+		this.cuit = cuit;
+	}
 	public String getCuit() {
 		return cuit;
 	}
@@ -41,8 +48,9 @@ public class Proveedor {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(cuit);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,7 +60,7 @@ public class Proveedor {
 		if (getClass() != obj.getClass())
 			return false;
 		Proveedor other = (Proveedor) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(cuit, other.cuit);
 	}
 	public String getNombre() {
 		return nombre;

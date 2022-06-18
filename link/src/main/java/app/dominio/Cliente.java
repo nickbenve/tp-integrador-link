@@ -23,11 +23,7 @@ public class Cliente extends Rol{
 	
 	@OneToMany
 	private List<Orden> compras;
-	
-	public Integer getId() {
-		return id;
-	}
-	
+
 	public Cliente(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
@@ -36,7 +32,6 @@ public class Cliente extends Rol{
 
 	protected Cliente() {
 		super();
-		this.compras=new ArrayList<Orden>();
 		// TODO Auto-generated constructor stub
 	}
 

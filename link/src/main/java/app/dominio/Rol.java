@@ -12,15 +12,10 @@ import javax.persistence.InheritanceType;
 public abstract class Rol {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	protected Integer id;
+	private Integer id;
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 	
 	
 }

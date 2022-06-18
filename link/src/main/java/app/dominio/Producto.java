@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.Transient;
@@ -50,10 +51,9 @@ public class Producto {
 		this.precio = precio;
 	}
 
-
-	private Boolean activo;
 	private Integer stock;
 	
+	@JoinColumn(name="id_proveedor")
 	@ManyToOne
 	private Proveedor proveedor;
 //
@@ -96,13 +96,7 @@ public class Producto {
 		}
 	}
 
-	public Boolean getActivo() {
-		return activo;
-	}
 
-	public void setActivo(Boolean activo) {
-		this.activo = activo;
-	}
 
 	public Integer getStock() {
 		return stock;
@@ -154,11 +148,7 @@ public class Producto {
 		this.esPesos=esPesos;
 		this.stock = stock;
 		this.proveedor = proveedor;
-		if(this.stock>0) {
-			this.activo=true;
-		}else {
-			this.activo=false;
-		}
+	
 	}
 
 

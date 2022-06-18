@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -19,13 +19,23 @@ public class Vendedor extends Rol{
 	
 	private String nombre;
 	private Integer legajo;
+	
 	@ManyToMany
 	private List<Proveedor> proveedores;
+	
+
 	@OneToMany
+	@JoinColumn(name="id_vendedor")
 	private List<Producto> productos;
 	
-	public Integer getId() {
-		return id;
+
+
+	public Vendedor(String nombre, Integer legajo, List<Proveedor> proveedores, List<Producto> productos) {
+		super();
+		this.nombre = nombre;
+		this.legajo = legajo;
+		this.proveedores = proveedores;
+		this.productos = productos;
 	}
 
 	protected Vendedor() {
@@ -73,9 +83,7 @@ public class Vendedor extends Rol{
 		this.productos = productos;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 
 	public void agregarProveedor(Proveedor proveedor) {
 		proveedores.add(proveedor);

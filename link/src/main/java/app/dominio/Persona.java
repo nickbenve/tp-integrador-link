@@ -2,6 +2,8 @@ package app.dominio;
 
 
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,9 +23,10 @@ public class Persona {
 	
 	private String usuario;
 	
-	@JsonIgnore
+
 	private String contrasenia;
 	
+	@JoinColumn(name="rolId")
 	@OneToOne
 	private Rol rol;
 
@@ -39,16 +42,11 @@ public class Persona {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
-	public Persona(String usuario, String contrasenia,Rol roles) {
-		super();
-		this.usuario = usuario;
-		this.contrasenia = contrasenia;
-		this.rol=roles;
-	}
-	public Rol getRoles() {
+
+	public Rol getRol() {
 		return rol;
 	}
-	public void setRoles(Rol roles) {
+	public void setRol(Rol roles) {
 		this.rol = roles;
 	}
 	protected Persona() {
@@ -59,6 +57,28 @@ public class Persona {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Persona other = (Persona) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	public Persona(String usuario, String contrasenia, Rol rol) {
+		super();
+		this.usuario = usuario;
+		this.contrasenia = contrasenia;
+		this.rol = rol;
 	}
 
 	
