@@ -19,7 +19,16 @@ public class Vendedor extends Rol{
 	
 	private String nombre;
 	private Integer legajo;
+	private String rol;
 	
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	@ManyToMany
 	private List<Proveedor> proveedores;
 	
@@ -36,6 +45,7 @@ public class Vendedor extends Rol{
 		this.legajo = legajo;
 		this.proveedores = proveedores;
 		this.productos = productos;
+		this.rol="vendedor";
 	}
 
 	protected Vendedor() {

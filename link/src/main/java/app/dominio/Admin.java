@@ -14,16 +14,27 @@ public class Admin extends Rol{
 	private String nombre;
 	private String mail;
 	private LocalDate fechaIngreso;
+	private String rol;
 
 	public Admin(String nombre,String mail) {
 		this.nombre=nombre;
 		this.mail=mail;
+		this.rol="admin";
 	}
 	
 	protected Admin() {
 		super();
 		this.fechaIngreso=LocalDate.now();
+		this.rol="admin";
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 	public String getNombre() {

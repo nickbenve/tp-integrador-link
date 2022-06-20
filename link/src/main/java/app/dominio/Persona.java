@@ -27,10 +27,12 @@ public class Persona {
 	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(name = "id", updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
 	private UUID id;
-
+	
+	
+	@JsonIgnore
 	private String usuario;
 	
-
+	@JsonIgnore
 	private String contrasenia;
 	
 	@JoinColumn(name="rolId")

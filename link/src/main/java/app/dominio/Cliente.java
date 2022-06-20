@@ -20,6 +20,7 @@ public class Cliente extends Rol{
 	
 	private String nombre;
 	private String dni;
+	private String rol;
 	
 	@OneToMany
 	private List<Orden> compras;
@@ -27,11 +28,28 @@ public class Cliente extends Rol{
 	public Cliente(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
+		this.rol="cliente";
+	}
+
+
+	public String getRol() {
+		return rol;
+	}
+
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
+
+	public void setCompras(List<Orden> compras) {
+		this.compras = compras;
 	}
 
 
 	protected Cliente() {
 		super();
+		this.rol="cliente";
 		// TODO Auto-generated constructor stub
 	}
 

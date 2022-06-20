@@ -15,5 +15,6 @@ import app.dominio.Persona;
 @RepositoryRestResource(path="personas")
 public interface RepoPersona extends PagingAndSortingRepository<Persona, UUID> {
 
+	Optional<Persona> findByUsuarioAndContrasenia(String usuario,String contrasenia);
 	
 }
