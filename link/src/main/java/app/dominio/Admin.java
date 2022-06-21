@@ -14,7 +14,7 @@ public class Admin extends Rol{
 	private String nombre;
 	private String mail;
 	private LocalDate fechaIngreso;
-	private String rol;
+	private String rol="admin";
 
 	public Admin(String nombre,String mail) {
 		this.nombre=nombre;
@@ -25,7 +25,6 @@ public class Admin extends Rol{
 	protected Admin() {
 		super();
 		this.fechaIngreso=LocalDate.now();
-		this.rol="admin";
 		// TODO Auto-generated constructor stub
 	}
 

@@ -19,7 +19,7 @@ public class Vendedor extends Rol{
 	
 	private String nombre;
 	private Integer legajo;
-	private String rol;
+	private String rol="vendedor";
 	
 	public String getRol() {
 		return rol;
@@ -45,7 +45,6 @@ public class Vendedor extends Rol{
 		this.legajo = legajo;
 		this.proveedores = proveedores;
 		this.productos = productos;
-		this.rol="vendedor";
 	}
 
 	protected Vendedor() {

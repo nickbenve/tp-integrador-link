@@ -20,7 +20,7 @@ public class Cliente extends Rol{
 	
 	private String nombre;
 	private String dni;
-	private String rol;
+	private String rol="cliente";
 	
 	@OneToMany
 	private List<Orden> compras;
@@ -28,7 +28,6 @@ public class Cliente extends Rol{
 	public Cliente(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
-		this.rol="cliente";
 	}
 
 
