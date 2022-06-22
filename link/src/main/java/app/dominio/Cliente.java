@@ -24,9 +24,25 @@ public class Cliente extends Rol{
 	private String dni;
 	private String rol="cliente";
 	
-	@OneToOne
-	private Carrito carrito;
+
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni, nombre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(dni, other.dni) && Objects.equals(nombre, other.nombre);
+	}
+
 	@OneToMany
 	private List<Orden> compras;
 
@@ -35,25 +51,13 @@ public class Cliente extends Rol{
 		this.dni = dni;
 	}
 
-
-	public Cliente(String nombre, String dni, String rol, Carrito carrito, List<Orden> compras) {
+	public Cliente(String nombre, String dni, List<Orden> compras) {
 		super();
 		this.nombre = nombre;
 		this.dni = dni;
-		this.rol = rol;
-		this.carrito = carrito;
 		this.compras = compras;
 	}
 
-
-	public Carrito getCarrito() {
-		return carrito;
-	}
-
-
-	public void setCarrito(Carrito carrito) {
-		this.carrito = carrito;
-	}
 
 
 	public String getRol() {

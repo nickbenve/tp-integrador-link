@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Carrito {
@@ -28,7 +29,7 @@ public class Carrito {
 	@ManyToMany
 	private List<Promocion> promociones;
 	
-	@ManyToOne
+	@OneToOne
 	private Cliente cliente;
 
 	public Cliente getCliente() {
