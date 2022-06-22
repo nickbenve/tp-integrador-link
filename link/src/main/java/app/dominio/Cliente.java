@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 @Entity
@@ -23,12 +24,35 @@ public class Cliente extends Rol{
 	private String dni;
 	private String rol="cliente";
 	
+	@OneToOne
+	private Carrito carrito;
+	
 	@OneToMany
 	private List<Orden> compras;
 
 	public Cliente(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
+	}
+
+
+	public Cliente(String nombre, String dni, String rol, Carrito carrito, List<Orden> compras) {
+		super();
+		this.nombre = nombre;
+		this.dni = dni;
+		this.rol = rol;
+		this.carrito = carrito;
+		this.compras = compras;
+	}
+
+
+	public Carrito getCarrito() {
+		return carrito;
+	}
+
+
+	public void setCarrito(Carrito carrito) {
+		this.carrito = carrito;
 	}
 
 

@@ -31,7 +31,7 @@ public class Item_Orden {
 	public Item_Orden(Integer cantidad,Producto producto) throws FaltaStockException {
 		super();
 		producto.consumir(cantidad);
-		this.setPrecio(producto.getPrecio());
+		this.precio=producto.getPrecio();
 		this.cantidad = cantidad;
 		this.producto = producto;
 	}
@@ -39,8 +39,16 @@ public class Item_Orden {
 		return id;
 	}
 	
+	public Item_Orden( double cantidad, Double precio, Producto producto) {
+	
+		this.cantidad = cantidad;
+		this.precio = precio;
+		this.producto = producto;
+	}
+
 	protected Item_Orden() {
 		super();
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -49,7 +57,8 @@ public class Item_Orden {
 	}
 
 	public void setPrecio(double precio) {
-		this.precio = precio;
+		
+		this.precio = this.producto.getPrecio();
 	}
 
 	public void agregarCantidad(double cantidad) {
@@ -70,7 +79,7 @@ public class Item_Orden {
 	}
 
 	public double getPrecio() {
-		return precio;
+		return this.producto.getPrecio();
 	}
 
 	public void setPrecio(Double precio) {

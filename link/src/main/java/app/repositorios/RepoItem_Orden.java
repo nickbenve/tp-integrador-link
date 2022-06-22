@@ -13,12 +13,6 @@ import app.dominio.Item_Orden;
 public interface RepoItem_Orden extends PagingAndSortingRepository<Item_Orden, Integer> {
 	
 	
-	@Override	
-	@RestResource(exported = false)
-	void deleteById(Integer id) ;
-	
-	@Override
-	@RestResource(exported = false)
-	void delete(Item_Orden entity) ;
+
 
 }
