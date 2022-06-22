@@ -1,6 +1,7 @@
 package app.dominio;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +23,7 @@ public class Admin extends Rol{
 		this.rol="admin";
 	}
 	
+
 	protected Admin() {
 		super();
 		this.fechaIngreso=LocalDate.now();

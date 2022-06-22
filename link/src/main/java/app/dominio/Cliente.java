@@ -4,6 +4,7 @@ package app.dominio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -76,5 +77,7 @@ public class Cliente extends Rol{
 	public void agregarCompra(Orden orden) {
 		compras.add(orden);
 	}
-	
+
+
+
 }

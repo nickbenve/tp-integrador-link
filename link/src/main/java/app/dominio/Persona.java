@@ -8,10 +8,10 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -29,13 +29,13 @@ public class Persona {
 	private UUID id;
 	
 	
-	@JsonIgnore
+
 	private String usuario;
 	
-	@JsonIgnore
+
 	private String contrasenia;
 	
-	@JoinColumn(name="rolId")
+	@JoinColumn(name="rol")
 	@OneToOne
 	private Rol rol;
 
@@ -68,6 +68,7 @@ public class Persona {
 	public void setId(UUID id) {
 		this.id = id;
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -83,7 +84,6 @@ public class Persona {
 		Persona other = (Persona) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 	public Persona(String usuario, String contrasenia, Rol rol) {
 		super();
 		this.usuario = usuario;
