@@ -29,10 +29,17 @@ public class Producto {
 	private String descripcion;
 	private Boolean esPesos;
 	
+	private String foto;
 	private Double precio;
 	
 
 
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
