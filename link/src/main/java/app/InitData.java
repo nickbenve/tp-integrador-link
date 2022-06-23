@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import app.dominio.Carrito;
 import app.dominio.Producto;
+import app.dominio.Proveedor;
 
 
 @Component
@@ -19,7 +20,7 @@ public class InitData implements CommandLineRunner  {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		config.exposeIdsFor(Producto.class,Carrito.class);
+		config.exposeIdsFor(Producto.class,Carrito.class,Proveedor.class);
 		
 		}
 		
