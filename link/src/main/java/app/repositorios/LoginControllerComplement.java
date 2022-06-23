@@ -3,6 +3,8 @@ package app.repositorios;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,7 @@ public class LoginControllerComplement {
 	@Autowired
 	RepoPersona repoPersonas;
 	
-	
+	@Transactional
 	@GetMapping("")
 	public  LoginDTO get(@RequestParam(value="usuario",required=false) String usuario,@RequestParam(value="contrasenia",required=false) String contrasenia) {
 		

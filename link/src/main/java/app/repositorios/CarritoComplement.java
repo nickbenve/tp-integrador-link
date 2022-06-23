@@ -3,6 +3,8 @@ package app.repositorios;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +28,7 @@ public class CarritoComplement {
 	@Autowired
 	RepoCarrito carritos;	
 	
+	@Transactional
 	@GetMapping("")
 	public  Carrito get(@RequestParam(value="id",required=false) UUID usuario) {
 		
