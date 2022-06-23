@@ -59,7 +59,13 @@ public class Carrito {
 	}
 
 	public Double costoTotal() {
-		return items.stream().mapToDouble(x->x.calcularPrecioItem()).sum();
+		if(items.isEmpty()) {
+			return 0.0;
+		}else {
+			return items.stream().mapToDouble(x->x.calcularPrecioItem()).sum();
+		}
+		
+		
 	 
 	}
 
@@ -68,7 +74,12 @@ public class Carrito {
 	}
 	
 	public Double aplicarDescuentos() {
-		return this.costoTotal()- promociones.stream().mapToDouble(x->x.descuento(this)).sum();
+		if(items.isEmpty()) {
+			return 0.0;
+		}else {
+			return this.costoTotal()- promociones.stream().mapToDouble(x->x.descuento(this)).sum();
+		}
+
 		
 	}
 	

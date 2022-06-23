@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.DTO.CarritoDTO;
 import app.DTO.LoginDTO;
 import app.dominio.Carrito;
 import app.dominio.Cliente;
@@ -30,7 +31,7 @@ public class CarritoComplement {
 	
 	@Transactional
 	@GetMapping("")
-	public  Carrito get(@RequestParam(value="id",required=false) UUID usuario) {
+	public  CarritoDTO get(@RequestParam(value="id",required=false) UUID usuario) {
 		
 		Optional<Cliente> opcionalPersona= clientes.findById(usuario);
 		
@@ -41,7 +42,14 @@ public class CarritoComplement {
 		
 		Carrito carrito=opcionalCarrito.get();
 		
-		return carrito;
+		CarritoDTO carritoDTO=new CarritoDTO();
+		carritoDTO.setCliente(carrito.getCliente());
+		carritoDTO.setItems(carrito.getItems());
+		carritoDTO.setMedioPago(carrito.getMedioPago());
+		carritoDTO.setPromociones(carrito.getPromociones());
+		carritoDTO.setPrecioTotalSinDescuento(carrito.costoTotal());
+		carritoDTO.setPrecioTotalConDescuento(carrito.aplicarDescuentos());
+		return carritoDTO;
 
 	}
 
