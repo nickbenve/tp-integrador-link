@@ -18,7 +18,7 @@ public class Item_Orden {
 	
 
 
-	private double cantidad;
+	private Integer cantidad;
 	private Double precio;
 	
 	@ManyToOne
@@ -39,29 +39,27 @@ public class Item_Orden {
 		return id;
 	}
 	
-	public Item_Orden( double cantidad, Double precio, Producto producto) {
+	public Item_Orden( Integer cantidad, Double precio, Producto producto) {
 	
 		this.cantidad = cantidad;
 		this.precio = precio;
 		this.producto = producto;
 	}
 
-	protected Item_Orden() {
+	public Item_Orden() {
 		super();
 		
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setCantidad(double cantidad) {
-		this.cantidad = cantidad;
-	}
+
 
 	public void setPrecio(double precio) {
 		
 		this.precio = this.producto.getPrecio();
 	}
 
-	public void agregarCantidad(double cantidad) {
+	public void agregarCantidad(Integer cantidad) {
 		this.cantidad=this.cantidad+cantidad;
 	}
 	

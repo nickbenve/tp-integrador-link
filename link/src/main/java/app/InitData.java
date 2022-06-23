@@ -8,6 +8,7 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.stereotype.Component;
 
 import app.dominio.Carrito;
+import app.dominio.Cliente;
 import app.dominio.Producto;
 import app.dominio.Proveedor;
 
@@ -20,7 +21,7 @@ public class InitData implements CommandLineRunner  {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		config.exposeIdsFor(Producto.class,Carrito.class,Proveedor.class);
+		config.exposeIdsFor(Producto.class,Carrito.class,Proveedor.class,Cliente.class);
 		
 		}
 		
