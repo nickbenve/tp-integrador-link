@@ -26,11 +26,18 @@ public class Membrecia  {
 	public Membrecia(List<Cliente> list) {
 		super();
 
+		this.miembros=list;
+		
 		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public Membrecia() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Membrecia(String nombre) {

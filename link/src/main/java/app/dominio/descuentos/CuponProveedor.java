@@ -48,11 +48,10 @@ public class CuponProveedor extends Promocion {
 		if(this.getUtilizado()) {
 			return 0.0;
 		}else {
+			this.setUtilizado(true);
 			if(this.getValor()<=carrito.costoEnProductosDe(proveedor)) {
-				this.utilizar();
 				return this.getValor();
 			}else {
-				this.utilizar();
 				return carrito.costoEnProductosDe(proveedor);
 			}
 		}

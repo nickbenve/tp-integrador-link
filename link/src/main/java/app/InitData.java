@@ -65,11 +65,13 @@ public class InitData implements CommandLineRunner  {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		config.exposeIdsFor(Producto.class,Carrito.class,Proveedor.class,Cliente.class);
+		config.exposeIdsFor(Producto.class,Carrito.class,Proveedor.class,Promocion.class,Cliente.class);
 		
 		if(repoPersonas.count()==0) {
 			Cliente cliente1=new Cliente("Juanito","33333");
 			Cliente cliente2=new Cliente("Albert","4444");
+			
+			
 			repoClientes.save(cliente1);
 			repoClientes.save(cliente2);
 			
@@ -92,13 +94,10 @@ public class InitData implements CommandLineRunner  {
 
 			
 			Vendedor vendedor1= new Vendedor("Carlos",11111,Arrays.asList(proveedor1),Arrays.asList(producto1,producto2));
-	
 
 			repoVendedores.save(vendedor1);
 
-		
 			Persona persona1=new Persona("v","v",vendedor1);
-
 			Persona persona3=new Persona("c","c",cliente1);
 			Persona persona4=new Persona("c2","c2",cliente2);
 			
@@ -111,23 +110,30 @@ public class InitData implements CommandLineRunner  {
 			Carrito carritoc2=new Carrito();
 			carritoc1.setCliente(cliente1);
 			carritoc2.setCliente(cliente2);
-			repoCarrito.save(carritoc1);
-			repoCarrito.save(carritoc2);
+			
+			
+		
 				
 			
 		
 			PromocionMedioPago promoMedioDePago = new PromocionMedioPago("Descuento en efectivo",MedioPago.EFECTIVO, 0.1);
-			CuponProveedor cuponProveedor = new CuponProveedor(0.10,proveedor1,false);
-			Membrecia membrecia = new Membrecia(Arrays.asList(cliente1,cliente2));
+			CuponProveedor cuponProveedor = new CuponProveedor(700.0,proveedor1,false);
+			Membrecia membrecia = new Membrecia(Arrays.asList(cliente2));
+			
 			repoMembrecia.save(membrecia);
-			DescuentoMembrecia desmembre=new DescuentoMembrecia(membrecia,0.1);
-					
+			
+			DescuentoMembrecia desmembre=new DescuentoMembrecia(membrecia,0.25);
+			carritoc2.agregarPromo(desmembre);		
 			List<Promocion> promocionesIniciales=List.of(promoMedioDePago,cuponProveedor,desmembre);
 			promocionesIniciales.stream().forEach(promocion -> {
 			repoPromo.save(promocion);
 			});
 
-
+			
+			carritoc1.agregarPromo(promoMedioDePago);
+			carritoc2.agregarPromo(promoMedioDePago);
+			repoCarrito.save(carritoc1);
+			repoCarrito.save(carritoc2);
 			
 
 		}
