@@ -2,6 +2,7 @@ package app.dominio.descuentos;
 
 import java.util.Objects;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,6 +14,7 @@ import app.dominio.Promocion;
 
 
 @Entity
+@DiscriminatorValue("1")
 public class PromocionMedioPago  extends Promocion{
 
 	private String descripcion;

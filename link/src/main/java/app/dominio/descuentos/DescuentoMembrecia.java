@@ -1,5 +1,6 @@
 package app.dominio.descuentos;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +13,12 @@ import app.dominio.Orden;
 import app.dominio.Promocion;
 
 @Entity
+@DiscriminatorValue("3")
 public class DescuentoMembrecia  extends Promocion{
+
 	
+
+
 	@OneToOne
 	private Membrecia membrecia;
 	

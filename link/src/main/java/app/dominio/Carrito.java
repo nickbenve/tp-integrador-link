@@ -52,7 +52,7 @@ public class Carrito {
 	}
 
 	
-	protected Carrito() {
+	public Carrito() {
 		super();
 		this.items=new ArrayList<Item_Orden>();
 		this.promociones=new ArrayList<Promocion>();

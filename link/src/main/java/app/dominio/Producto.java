@@ -140,6 +140,17 @@ public class Producto {
 
 
 
+	public Producto(String nombre, String descripcion, Boolean esPesos, String foto, Double precio, Integer stock,
+			Proveedor proveedor) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.esPesos = esPesos;
+		this.foto = foto;
+		this.precio = precio;
+		this.stock = stock;
+		this.proveedor = proveedor;
+	}
 	public Boolean getEsPesos() {
 		return esPesos;
 	}

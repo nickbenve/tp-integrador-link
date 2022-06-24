@@ -1,5 +1,6 @@
 package app.dominio.descuentos;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import app.dominio.Promocion;
 import app.dominio.Proveedor;
 
 @Entity
+@DiscriminatorValue("2")
 public class CuponProveedor extends Promocion {
 
 	private Double valor;
@@ -64,6 +66,12 @@ public class CuponProveedor extends Promocion {
 	}
 	
 	
+	public CuponProveedor(Double valor, Proveedor proveedor, boolean utilizado) {
+		super();
+		this.valor = valor;
+		this.proveedor = proveedor;
+		this.utilizado = utilizado;
+	}
 	protected CuponProveedor() {
 		super();
 		// TODO Auto-generated constructor stub

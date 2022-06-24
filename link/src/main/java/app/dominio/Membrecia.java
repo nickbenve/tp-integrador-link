@@ -23,9 +23,9 @@ public class Membrecia  {
 	private  List<Cliente> miembros;
 	
 		
-	public Membrecia() {
+	public Membrecia(List<Cliente> list) {
 		super();
-		miembros=new ArrayList<Cliente>();
+
 		// TODO Auto-generated constructor stub
 	}
 
