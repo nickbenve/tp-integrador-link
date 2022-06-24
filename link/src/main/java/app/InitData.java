@@ -84,8 +84,8 @@ public class InitData implements CommandLineRunner  {
 			repoProveedores.save(proveedor2);
 			
 			
-			Producto producto1=new Producto("Remera" , "Color negro",false,"https://sublitextil.com.ar/wp-content/uploads/2019/01/Remera-sublimar-hombre-.jpg",200.0,50,proveedor1);
-			Producto producto2=new Producto("Pantalon negro","talle m",false,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpe-lszpHSJetmVqGxvlN0RX0SiWhS4Fyc9w&usqp=CAU",1.0,50,proveedor2);
+			Producto producto1=new Producto("Remera" , "Color negro",false,"https://sublitextil.com.ar/wp-content/uploads/2019/01/Remera-sublimar-hombre-.jpg",200.0,5000,proveedor1);
+			Producto producto2=new Producto("Pantalon negro","talle m",false,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpe-lszpHSJetmVqGxvlN0RX0SiWhS4Fyc9w&usqp=CAU",1.0,5000,proveedor2);
 			List<Producto> productosIniciales=List.of(producto1,producto2);
 			productosIniciales.stream().forEach(producto -> {
 			repoProd.save(producto);

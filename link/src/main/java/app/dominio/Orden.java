@@ -25,13 +25,36 @@ public class Orden {
 	@OneToMany
 	private List<Item_Orden> items;
 
+	public Orden(Double valorVendido,List<Item_Orden> items, MedioPago medioPago, List<Promocion> promociones,
+			Cliente cliente) {
+		super();
+		this.valorVendido=valorVendido;
+		this.fecha_creacion = LocalDate.now();
+		this.items = items;
+		this.medioPago = medioPago;
+		this.promociones = promociones;
+		this.cliente = cliente;
+	}
+
 	@Enumerated(EnumType.STRING)
 	private MedioPago medioPago;
 	
 	@ManyToMany
 	private List<Promocion> promociones;
 	
-	private Boolean confirmada;
+
+	
+
+
+	public Double getValorVendido() {
+		return valorVendido;
+	}
+
+	public void setValorVendido(Double valorVendido) {
+		this.valorVendido = valorVendido;
+	}
+
+	private Double valorVendido;
 	
 	@ManyToOne
 	private Cliente cliente;
@@ -55,7 +78,6 @@ public class Orden {
 		super();
 		this.cliente=cliente;
 		this.fecha_creacion= LocalDate.now();
-		this.confirmada=false;
 		this.items=new ArrayList<Item_Orden>();
 		this.promociones=new ArrayList<Promocion>();
 	}
@@ -64,7 +86,6 @@ public class Orden {
 	protected Orden() {
 		super();
 		this.fecha_creacion= LocalDate.now();
-		this.confirmada=false;
 		this.items=new ArrayList<Item_Orden>();
 		this.promociones=new ArrayList<Promocion>();
 		// TODO Auto-generated constructor stub

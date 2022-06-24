@@ -68,6 +68,16 @@ public class Carrito {
 		
 	 
 	}
+	
+	public void vaciar() {
+		this.setItems(null);
+		this.setMedioPago(null);
+		this.setPromociones(null);
+		this.items=new ArrayList<Item_Orden>();
+		this.promociones=new ArrayList<Promocion>();
+	
+		
+	}
 
 	public void agregarItem(Item_Orden itemNuevo) {
 		items.add(itemNuevo);
