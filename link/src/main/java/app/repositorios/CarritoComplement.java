@@ -20,6 +20,7 @@ import app.DTO.LoginDTO;
 import app.dominio.Carrito;
 import app.dominio.Cliente;
 import app.dominio.Item_Orden;
+import app.dominio.MedioPago;
 import app.dominio.Persona;
 import app.dominio.Producto;
 import app.excepciones.FaltaStockException;
@@ -65,7 +66,27 @@ public class CarritoComplement {
 
 	}
 	
-
+	
+	@Transactional
+	@PostMapping("/{cliente}/{metodoPago}")
+	public void metodoPago(@PathVariable(value="cliente") UUID clienteid,@PathVariable(value="metodoPago") String metodo) {
+		Optional<Cliente> opcionalPersona= clientes.findById(clienteid);
+		Cliente cliente=opcionalPersona.get();
+		
+		Optional<Carrito> opcionalCarrito=carritos.findByCliente(cliente);
+		Carrito carrito=opcionalCarrito.get();
+		if(metodo.equals("EFECTIVO")) {
+			carrito.setMedioPago(MedioPago.EFECTIVO);
+		}else {
+			if(metodo.equals("TARJETA")) {
+				carrito.setMedioPago(MedioPago.TARJETA);
+			}else {
+				carrito.setMedioPago(MedioPago.CHEQUE);
+			}
+		}		
+	}
+	
+	
 	@Transactional
 	@PostMapping("/{cliente}/carritoDeCompras/items/{producto}/{cantidad}")
 	public void post(@PathVariable(value="cliente") UUID cliente,

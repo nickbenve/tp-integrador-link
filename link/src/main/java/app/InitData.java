@@ -117,7 +117,7 @@ public class InitData implements CommandLineRunner  {
 			
 		
 			PromocionMedioPago promoMedioDePago = new PromocionMedioPago("Descuento en efectivo",MedioPago.EFECTIVO, 0.1);
-			CuponProveedor cuponProveedor = new CuponProveedor(0.10,proveedor1,true);
+			CuponProveedor cuponProveedor = new CuponProveedor(0.10,proveedor1,false);
 			Membrecia membrecia = new Membrecia(Arrays.asList(cliente1,cliente2));
 			repoMembrecia.save(membrecia);
 			DescuentoMembrecia desmembre=new DescuentoMembrecia(membrecia,0.1);
