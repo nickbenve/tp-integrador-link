@@ -51,9 +51,11 @@ http://localhost:8080/carritos con body:
     "promociones":[]
 }
 
+
 -crear producto, utilziando post:
 
 http://localhost:8080/vendedor/ed8c7b3f-673f-4663-aec8-240c08a9bdca/productos con body:
+
 {
     "id_proveedor":2,
     "nombre":"heladeraA",
@@ -63,7 +65,9 @@ http://localhost:8080/vendedor/ed8c7b3f-673f-4663-aec8-240c08a9bdca/productos co
    "foto":"https://m.media-amazon.com/images/I/71Ysqd7TTZL._AC_UX342_.jpg",
    "esPesos":true
 } 
+
 -crear item con post:
+
 http://localhost:8080/itemsOrdenes con body:
 {
     "cantidad":2,
