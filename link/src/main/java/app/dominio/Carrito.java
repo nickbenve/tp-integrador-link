@@ -13,52 +13,24 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import javax.persistence.OneToOne;
 
 @Entity
-public class Orden {
+public class Carrito {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	private LocalDate fecha_creacion;
-	
 	@OneToMany
 	private List<Item_Orden> items;
-
-	public Orden(Double valorVendido,List<Item_Orden> items, MedioPago medioPago, List<Promocion> promociones,
-			Cliente cliente) {
-		super();
-		this.valorVendido=valorVendido;
-		this.fecha_creacion = LocalDate.now();
-		this.items = items;
-		this.medioPago = medioPago;
-		this.promociones = promociones;
-		this.cliente = cliente;
-	}
-
+	
 	@Enumerated(EnumType.STRING)
 	private MedioPago medioPago;
 	
 	@ManyToMany
 	private List<Promocion> promociones;
 	
-
-	
-
-
-	public Double getValorVendido() {
-		return valorVendido;
-	}
-
-	public void setValorVendido(Double valorVendido) {
-		this.valorVendido = valorVendido;
-	}
-
-	private Double valorVendido;
-	
-	@ManyToOne
+	@OneToOne
 	private Cliente cliente;
-	
 
 	public Cliente getCliente() {
 		return cliente;
@@ -72,34 +44,50 @@ public class Orden {
 		this.cliente = cliente;
 	}
 
-	
-	
-	public Orden(Cliente cliente) {
+	public Carrito(Cliente cliente) {
 		super();
 		this.cliente=cliente;
-		this.fecha_creacion= LocalDate.now();
 		this.items=new ArrayList<Item_Orden>();
 		this.promociones=new ArrayList<Promocion>();
 	}
 
 	
-	protected Orden() {
+	public Carrito() {
 		super();
-		this.fecha_creacion= LocalDate.now();
 		this.items=new ArrayList<Item_Orden>();
 		this.promociones=new ArrayList<Promocion>();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Double costoTotal() {
-		return items.stream().mapToDouble(x->x.calcularPrecioItem()).sum();
+		if(items.isEmpty()) {
+			return 0.0;
+		}else {
+			return items.stream().mapToDouble(x->x.calcularPrecioItem()).sum();
+		}
+		
+		
 	 
+	}
+	
+	public void vaciar() {
+		this.items=new ArrayList<Item_Orden>();
+		this.promociones=new ArrayList<Promocion>();
+	
 	}
 
 	public void agregarItem(Item_Orden itemNuevo) {
 		items.add(itemNuevo);
 	}
 	
+	public Double aplicarDescuentos() {
+		if(items.isEmpty()) {
+			return 0.0;
+		}else {
+			return this.costoTotal()- promociones.stream().mapToDouble(x->x.descuento(this)).sum();
+		}
+
+		
+	}
 	
 	public Double costoEnProductosDe(Proveedor proveedor) {
 		
@@ -113,14 +101,6 @@ public class Orden {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public LocalDate getFecha_creacion() {
-		return fecha_creacion;
-	}
-
-	public void setFecha_creacion(LocalDate fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
 	}
 
 	public List<Item_Orden> getItems() {
@@ -146,7 +126,5 @@ public class Orden {
 	public void setPromociones(List<Promocion> promociones) {
 		this.promociones = promociones;
 	}
-	
-	
 	
 }

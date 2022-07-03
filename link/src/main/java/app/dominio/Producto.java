@@ -8,9 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.Transient;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import app.excepciones.FaltaStockException;
 import app.precios.CotizacionDolar;
@@ -26,16 +29,27 @@ public class Producto {
 	private String descripcion;
 	private Boolean esPesos;
 	
+	private String foto;
 	private Double precio;
 	
-	@ManyToOne
-	private CotizacionDolar cotizador;
-	
-	public CotizacionDolar getCotizador() {
-		return cotizador;
+
+
+	public String getFoto() {
+		return foto;
 	}
-	public void setCotizador(CotizacionDolar optional) {
-		this.cotizador = optional;
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producto other = (Producto) obj;
+		return Objects.equals(id, other.id);
 	}
 	public void setId(Integer id) {
 		this.id = id;
@@ -44,13 +58,15 @@ public class Producto {
 		this.precio = precio;
 	}
 
-
-	private Boolean activo;
 	private Integer stock;
 	
+	@JoinColumn(name="id_proveedor")
 	@ManyToOne
 	private Proveedor proveedor;
-
+//
+//	@Transient
+//	private CotizacionDolar cd;
+	
 	public Producto() {
 		super();
 	}
@@ -76,23 +92,18 @@ public class Producto {
 		this.proveedor = proveedor;
 	}
 
-
 	
 	public Double getPrecio() {
 		if(esPesos) {
 			return this.precio;
 		}else {
-			return cotizador.calcularPrecio(this.precio);
+			CotizacionDolar coti=CotizacionDolar.getCotizacionDolar();
+			Double valor=coti.calcularPrecio();
+			return coti.calcularPrecio(this.precio);
 		}
 	}
 
-	public Boolean getActivo() {
-		return activo;
-	}
 
-	public void setActivo(Boolean activo) {
-		this.activo = activo;
-	}
 
 	public Integer getStock() {
 		return stock;
@@ -129,6 +140,17 @@ public class Producto {
 
 
 
+	public Producto(String nombre, String descripcion, Boolean esPesos, String foto, Double precio, Integer stock,
+			Proveedor proveedor) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.esPesos = esPesos;
+		this.foto = foto;
+		this.precio = precio;
+		this.stock = stock;
+		this.proveedor = proveedor;
+	}
 	public Boolean getEsPesos() {
 		return esPesos;
 	}
@@ -144,17 +166,13 @@ public class Producto {
 		this.esPesos=esPesos;
 		this.stock = stock;
 		this.proveedor = proveedor;
-		if(this.stock>0) {
-			this.activo=true;
-		}else {
-			this.activo=false;
-		}
+	
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(nombre, proveedor);
+		return Objects.hash(id);
 	}
 
 

@@ -1,16 +1,19 @@
 package app.dominio.descuentos;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import app.dominio.Carrito;
 import app.dominio.Orden;
 import app.dominio.Promocion;
 import app.dominio.Proveedor;
 
 @Entity
+@DiscriminatorValue("2")
 public class CuponProveedor extends Promocion {
 
 	private Double valor;
@@ -41,16 +44,15 @@ public class CuponProveedor extends Promocion {
 	}
 	
 	@Override
-	public Double descuento(Orden orden) {
+	public Double descuento(Carrito carrito) {
 		if(this.getUtilizado()) {
 			return 0.0;
 		}else {
-			if(this.getValor()<=orden.costoEnProductosDe(proveedor)) {
-				this.utilizar();
+			this.setUtilizado(true);
+			if(this.getValor()<=carrito.costoEnProductosDe(proveedor)) {
 				return this.getValor();
 			}else {
-				this.utilizar();
-				return orden.costoEnProductosDe(proveedor);
+				return carrito.costoEnProductosDe(proveedor);
 			}
 		}
 	}
@@ -63,6 +65,12 @@ public class CuponProveedor extends Promocion {
 	}
 	
 	
+	public CuponProveedor(Double valor, Proveedor proveedor, boolean utilizado) {
+		super();
+		this.valor = valor;
+		this.proveedor = proveedor;
+		this.utilizado = utilizado;
+	}
 	protected CuponProveedor() {
 		super();
 		// TODO Auto-generated constructor stub

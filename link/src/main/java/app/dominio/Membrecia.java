@@ -23,14 +23,21 @@ public class Membrecia  {
 	private  List<Cliente> miembros;
 	
 		
-	public Membrecia() {
+	public Membrecia(List<Cliente> list) {
 		super();
-		miembros=new ArrayList<Cliente>();
+
+		this.miembros=list;
+		
 		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public Membrecia() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Membrecia(String nombre) {

@@ -2,42 +2,25 @@ package app.precios;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-
 @Component
-@Entity
-public class CotizacionDolar{
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+public class CotizacionDolar {
+
+	private static CotizacionDolar cotizacionDolar;
+
 	
 	public Double valor;
-	
-	private static CotizacionDolar cotizadorDolar;
-	
-	
+
 	public CotizacionDolar() {
 		this.actualizar();
 	}
 	
-	
-	public static CotizacionDolar getCotizadorDolar() {
-
-		if (cotizadorDolar==null) {
-
-			cotizadorDolar = new CotizacionDolar();
-		}
-			return cotizadorDolar;
-	}
-
 	public Double calcularPrecio(Double valor) {
 		return 	this.calcularPrecio()*valor;		
 	}
@@ -59,6 +42,15 @@ public class CotizacionDolar{
 	}
 
 
+	public static CotizacionDolar getCotizacionDolar() {
+		if (cotizacionDolar==null) {
+
+			cotizacionDolar = new CotizacionDolar();
+		}
+
+		return cotizacionDolar;
+
+	}
 
 	public void setValor(Double valor) {
 		this.valor = valor;
@@ -81,5 +73,7 @@ public class CotizacionDolar{
 		return valor;
 		
 	}
+
+
 
 }

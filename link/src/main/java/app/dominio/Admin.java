@@ -1,6 +1,7 @@
 package app.dominio;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,16 +15,27 @@ public class Admin extends Rol{
 	private String nombre;
 	private String mail;
 	private LocalDate fechaIngreso;
+	private String rol="admin";
 
 	public Admin(String nombre,String mail) {
 		this.nombre=nombre;
 		this.mail=mail;
+		this.rol="admin";
 	}
 	
+
 	protected Admin() {
 		super();
 		this.fechaIngreso=LocalDate.now();
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 	public String getNombre() {
