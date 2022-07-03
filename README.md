@@ -13,8 +13,12 @@ eliminar los elementos del dominio, siendo esto un posible futuro refactor en cu
 -Para cuestiones particulares, se crearon algunos controllerComplements. Estos creo que son el mayor punto, ya que son una gran mayoria los que se utilizan en 
 el front, por lo que desarrollare los mismos.
     vendedorComplement:
-    -/vendedor/{vendedorID}/productos: verificando que exista el id del vendedor, esta url devuelve los productos que dispone un vendedor.
-    -
+    -/vendedor/{vendedorID}/productos: Al realizar un post, enviando en el body un producto y como proveedor el id del proveedor del mismo, se crea un producto,     se le asocia al proveedor correspondiente y se le agrega a los productos del vendedor.
+    loginComplement:
+    -/login: enviando un parametros en el body un usuario y una contraseña, devuelve el id del rol que lo representa y un string que expresa que tipo de rol es,
+            para facilitar el front.
+            
+     
 
 
 
