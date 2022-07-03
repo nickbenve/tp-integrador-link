@@ -1,5 +1,6 @@
 # tp-integrador-link
 Indicaciones generales:
+
 -No se encuentra subido a heroku, por lo que no es necesario configurar variables de entorno (se cargan desde application.properties)
 -Cuando se crea la db, gracias al archivo InitData inicializo algunos objetos que seran persistidos, tales como Personas,Vendedores, Cliente. Como comentario de
 este item, me gustaria desctacar que cada cliente posee un carrito de compra y este se vacia al confirmarlo, gestionando previo una orden con la informacion a 
