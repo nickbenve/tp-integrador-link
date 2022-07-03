@@ -11,6 +11,14 @@ Generales API:
 
 -Gracias a la implementacion de repositorios que responden a consultas api tambien del tipo PagingAndSortingRepository, se logra poder crear modificar y eliminar los elementos del dominio, siendo esto un posible futuro refactor en cuestiones de seguridad.
 
+-Con respecto a las promociones, las mismas se crean gracias a estos repositorios. Por ejemplo, para crear una promocion de medio de pago, se realizara a la siguiente url :http://localhost:8080/promocionesMediosDePago con el body:
+{
+    "medioDePago":"EFECTIVO",
+    "porcentaje":0.1,
+    "descripcion":"10% en efectivo"
+}
+
+
 -Para cuestiones particulares, se crearon algunos controllerComplements. Estos creo que son el mayor punto, ya que son una gran mayoria los que se utilizan en el front, por lo que desarrollare los mismos:
 
     vendedorComplement:
